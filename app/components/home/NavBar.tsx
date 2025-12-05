@@ -438,8 +438,6 @@ const NavBar = () => {
           </div>
         </div>
       )}
-
-      <div className="h-24 lg:h-28" />
     </>
   );
 };
