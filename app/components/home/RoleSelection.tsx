@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 
 const RoleSelection = () => {
-  // Consolidated data-driven configuration with enhanced properties
   const roles = [
     {
       id: "customer",
@@ -135,13 +134,9 @@ const RoleSelection = () => {
     },
   ];
 
-  // Platform stats
-
   return (
     <section className="relative pt-20 bg-zinc-950 overflow-hidden">
-      {/* Background Atmosphere */}
       <div className="absolute inset-0">
-        {/* Animated Gradient Mesh */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
           <div className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full bg-amber-500/10 blur-3xl" />
@@ -149,12 +144,10 @@ const RoleSelection = () => {
           <div className="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-violet-500/10 blur-3xl" />
         </div>
 
-        {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 font-mont tracking-tight">
             Find Your{" "}
@@ -168,21 +161,17 @@ const RoleSelection = () => {
           </p>
         </div>
 
-        {/* Role Cards Grid - Bento Style */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {roles.map((role, index) => (
+          {roles.map((role) => (
             <div key={role.id} className="group relative">
-              {/* Card Container */}
               <div
-                className={`relative h-full overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900/60 to-zinc-950/60 p-8 transition-all duration-500 hover:-translate-y-2 ${role.hoverBorder} ${role.hoverGlow} backdrop-blur-sm`}
+                className={`relative h-full overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900/60 to-zinc-950/60 p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 ${role.hoverBorder} ${role.hoverGlow} backdrop-blur-sm`}
               >
-                {/* Hover Gradient Overlay */}
                 <div
                   className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${role.bgGradient} group-hover:opacity-100`}
                 />
 
-                {/* Badge */}
-                <div className="absolute top-6 right-6 z-20">
+                <div className="absolute top-4 lg:top-6 right-4 lg:right-6 z-20">
                   <span
                     className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold backdrop-blur-sm ${role.badge.color}`}
                   >
@@ -190,13 +179,12 @@ const RoleSelection = () => {
                   </span>
                 </div>
 
-                {/* Content */}
                 <div className="relative z-10 h-full flex flex-col">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-8">
+                  <div className="flex items-start justify-between mb-6 lg:mb-8">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`p-4 rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-800 border border-zinc-800 ${
+                        className={`p-3 lg:p-4 rounded-xl lg:rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-800 border border-zinc-800 ${
                           role.accent === "emerald"
                             ? "text-emerald-400"
                             : role.accent === "amber"
@@ -206,14 +194,14 @@ const RoleSelection = () => {
                             : "text-violet-400"
                         }`}
                       >
-                        <role.icon className="w-8 h-8" />
+                        <role.icon className="w-6 h-6 lg:w-8 lg:h-8" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-white font-mont">
+                        <h3 className="text-xl lg:text-2xl font-bold text-white font-mont">
                           {role.title}
                         </h3>
                         <p
-                          className={`text-sm font-medium ${
+                          className={`text-xs lg:text-sm font-medium ${
                             role.accent === "emerald"
                               ? "text-emerald-400/80"
                               : role.accent === "amber"
@@ -229,13 +217,11 @@ const RoleSelection = () => {
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-zinc-400 font-noto leading-relaxed mb-8 flex-grow">
+                  <p className="text-sm lg:text-base text-zinc-400 font-noto leading-relaxed mb-6 lg:mb-8 flex-grow">
                     {role.description}
                   </p>
 
-                  {/* Features Grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-6 lg:mb-8">
                     {role.features.map((feature, idx) => (
                       <div
                         key={idx}
@@ -257,9 +243,8 @@ const RoleSelection = () => {
                     ))}
                   </div>
 
-                  {/* Footer */}
-                  <div className="mt-auto pt-8 border-t border-zinc-800">
-                    <div className="flex items-center justify-between">
+                  <div className="mt-auto pt-6 lg:pt-8 border-t border-zinc-800">
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
                         <div
                           className={`p-2 rounded-lg ${
@@ -280,7 +265,7 @@ const RoleSelection = () => {
                       </div>
 
                       <button
-                        className={`group/btn relative overflow-hidden rounded-xl px-6 py-3.5 font-semibold text-white transition-all ${
+                        className={`group/btn relative overflow-hidden rounded-xl px-6 py-3.5 font-semibold text-white transition-all w-full lg:w-auto ${
                           role.accent === "emerald"
                             ? "bg-emerald-600 hover:bg-emerald-700"
                             : role.accent === "amber"
@@ -290,7 +275,7 @@ const RoleSelection = () => {
                             : "bg-violet-600 hover:bg-violet-700"
                         } hover:shadow-xl active:scale-95`}
                       >
-                        <span className="relative z-10 flex items-center gap-2">
+                        <span className="relative z-10 flex items-center justify-center lg:justify-start gap-2">
                           {role.cta}
                           <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                         </span>
@@ -303,9 +288,8 @@ const RoleSelection = () => {
                 </div>
               </div>
 
-              {/* Decorative Element */}
               <div
-                className={`absolute -top-2 -right-2 w-20 h-20 rounded-full ${
+                className={`absolute -top-2 -right-2 w-16 h-16 lg:w-20 lg:h-20 rounded-full ${
                   role.accent === "emerald"
                     ? "bg-emerald-500/5"
                     : role.accent === "amber"
@@ -319,7 +303,6 @@ const RoleSelection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-20 pt-12">
           <div className="max-w-2xl mx-auto text-center"></div>
         </div>
