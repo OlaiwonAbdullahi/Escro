@@ -1,4 +1,5 @@
 import ProductCard from "./_components/product-card";
+import AddProduct from "./_components/addproduct";
 import { IconPlus, IconSearch, IconAdjustments } from "@tabler/icons-react";
 
 const Page = () => {
@@ -82,10 +83,7 @@ const Page = () => {
               Manage your store inventory and products
             </p>
           </div>
-          <button className="bg-emerald-900 hover:bg-emerald-600 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200 flex items-center gap-2 shadow-sm">
-            <IconPlus className="w-5 h-5" />
-            Add Product
-          </button>
+          <AddProduct />
         </div>
 
         {/* Search and Filter Bar */}

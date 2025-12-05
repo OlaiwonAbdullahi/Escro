@@ -4,7 +4,6 @@ import {
   IconLayoutDashboard,
   IconPackage,
   IconShoppingCart,
-  IconChartBar,
   IconSettings,
   IconUser,
   IconShoppingBag,
@@ -40,11 +39,7 @@ const items = [
     url: "/mystore/orders",
     icon: IconShoppingCart,
   },
-  {
-    title: "Analytics",
-    url: "/mystore/analytics",
-    icon: IconChartBar,
-  },
+
   {
     title: "Settings",
     url: "/mystore/settings",

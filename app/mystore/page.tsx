@@ -4,7 +4,6 @@ import SalesChart from "./_components/sales-chart";
 import QuickActions from "./_components/quick-actions";
 
 const Page = () => {
-  // Sample data - replace with real data from your API
   const stats = [
     {
       title: "Today's Sales",
