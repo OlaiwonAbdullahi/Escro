@@ -16,6 +16,7 @@ import {
 
 const HowItWorks = () => {
   // Consolidated data-driven configuration
+
   const workflows = [
     {
       id: "customers",
@@ -100,7 +101,10 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="relative bg-zinc-950 pt-24 overflow-hidden">
+    <section
+      className="relative bg-zinc-950 pt-24 overflow-hidden"
+      id="HowItWorks"
+    >
       {/* Background Atmosphere */}
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900/50 to-zinc-950">
         {/* Geometric Pattern */}
