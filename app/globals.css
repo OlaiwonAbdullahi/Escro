@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@theme{
+@theme {
   --font-mont: "Montserrat";
   --font-noto: "Noto";
   --font-space: "Space";
@@ -23,8 +23,17 @@
   src: url("../public/Space_Mono/SpaceMono-Regular.ttf");
 }
 
+.font-noto {
+  font-family: var(--font-noto);
+}
 
+.font-space {
+  font-family: var(--font-space);
+}
 
+.font-mont {
+  font-family: var(--font-mont);
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -66,6 +75,68 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Escro Marketplace Colors */
+
+  /* Emerald Green - Primary */
+  --color-emerald-100: var(--emerald-100);
+  --color-emerald-200: var(--emerald-200);
+  --color-emerald-300: var(--emerald-300);
+  --color-emerald-400: var(--emerald-400);
+  --color-emerald-500: var(--emerald-500);
+  --color-emerald-600: var(--emerald-600);
+  --color-emerald-700: var(--emerald-700);
+  --color-emerald-800: var(--emerald-800);
+  --color-emerald-900: var(--emerald-900);
+
+  /* Teal - Background */
+  --color-teal-darker: var(--teal-darker);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-medium-dark: var(--teal-medium-dark);
+  --color-teal-main: var(--teal-main);
+  --color-teal-medium: var(--teal-medium);
+  --color-teal-light: var(--teal-light);
+
+  /* Gray - Cards & Surfaces */
+  --color-slate-900: var(--slate-900);
+  --color-gray-900: var(--gray-900);
+  --color-gray-800: var(--gray-800);
+  --color-gray-700: var(--gray-700);
+  --color-gray-600: var(--gray-600);
+  --color-gray-500: var(--gray-500);
+  --color-gray-400: var(--gray-400);
+  --color-gray-300: var(--gray-300);
+  --color-gray-200: var(--gray-200);
+  --color-gray-100: var(--gray-100);
+  --color-gray-50: var(--gray-50);
+
+  /* Amber - Secondary Accent */
+  --color-amber-100: var(--amber-100);
+  --color-amber-200: var(--amber-200);
+  --color-amber-300: var(--amber-300);
+  --color-amber-400: var(--amber-400);
+  --color-amber-500: var(--amber-500);
+  --color-amber-600: var(--amber-600);
+  --color-amber-700: var(--amber-700);
+  --color-amber-800: var(--amber-800);
+
+  /* White/Light */
+  --color-white: var(--white);
+  --color-off-white: var(--off-white);
+
+  /* Status Colors */
+  --color-success-light: var(--success-light);
+  --color-success-main: var(--success-main);
+  --color-success-dark: var(--success-dark);
+  --color-warning-light: var(--warning-light);
+  --color-warning-main: var(--warning-main);
+  --color-warning-dark: var(--warning-dark);
+  --color-error-light: var(--error-light);
+  --color-error-main: var(--error-main);
+  --color-error-dark: var(--error-dark);
+  --color-info-light: var(--info-light);
+  --color-info-main: var(--info-main);
+  --color-info-dark: var(--info-dark);
 }
 
 :root {
@@ -101,6 +172,71 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* ===== Escro Marketplace Color Palette ===== */
+
+  /* Primary Colors - Emerald Green */
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-300: #6ee7b7;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+
+  /* Background - Dark Teal/Forest Green */
+  --teal-darker: #0a1f1f;
+  --teal-dark: #0f2f2f;
+  --teal-medium-dark: #153939;
+  --teal-main: #1a4d4d;
+  --teal-medium: #1f4a4a;
+  --teal-light: #2a5a5a;
+
+  /* Cards & Surfaces - Charcoal/Dark Gray */
+  --slate-900: #0f172a;
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+
+  /* Secondary Accent - Orange/Amber */
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+
+  /* White/Light */
+  --white: #ffffff;
+  --off-white: #f9fafb;
+
+  /* Status Colors */
+  --success-light: #d1fae5;
+  --success-main: #10b981;
+  --success-dark: #059669;
+
+  --warning-light: #fef3c7;
+  --warning-main: #f59e0b;
+  --warning-dark: #d97706;
+
+  --error-light: #fee2e2;
+  --error-main: #ef4444;
+  --error-dark: #dc2626;
+
+  --info-light: #dbeafe;
+  --info-main: #3b82f6;
+  --info-dark: #2563eb;
 }
 
 .dark {
@@ -144,4 +280,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/*global styling to stop overflow*/
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -webkit-overflow-scrolling: touch;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
