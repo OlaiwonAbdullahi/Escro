@@ -33,7 +33,7 @@ const AddProduct = () => {
           Add Product
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[550px] scrollbar-hide max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[550px] font-mont scrollbar-hide max-h-[90vh] overflow-y-auto">
         <DialogHeader className="space-y-3">
           <DialogTitle className="text-2xl font-bold text-gray-900">
             Add New Product
