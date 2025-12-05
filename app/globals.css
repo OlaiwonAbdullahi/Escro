@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@theme{
+@theme {
   --font-mont: "Montserrat";
   --font-noto: "Noto";
   --font-space: "Space";
@@ -23,8 +23,17 @@
   src: url("../public/Space_Mono/SpaceMono-Regular.ttf");
 }
 
+.font-noto {
+  font-family: var(--font-noto);
+}
 
+.font-space {
+  font-family: var(--font-space);
+}
 
+.font-mont {
+  font-family: var(--font-mont);
+}
 
 @custom-variant dark (&:is(.dark *));
 

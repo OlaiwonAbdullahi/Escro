@@ -218,7 +218,7 @@ const Page = () => {
             <div className="flex flex-wrap gap-3">
               {/* Status Filter */}
               <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-[160px] h-9  bg-gray-50 border-gray-200 rounded-sm">
+                <SelectTrigger className="w-[160px] h-9 font-mont bg-gray-50 border-gray-200 rounded-sm">
                   <SelectValue placeholder="All Status" />
                 </SelectTrigger>
                 <SelectContent>

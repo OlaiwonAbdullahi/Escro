@@ -147,7 +147,7 @@ const OrdersTable = ({ orders, onViewDetails }: OrdersTableProps) => {
     <TooltipProvider>
       <div className="bg-white border border-emerald-200 rounded-md overflow-hidden ">
         {/* Desktop Table */}
-        <div className="hidden lg:block overflow-x-auto">
+        <div className="hidden lg:block overflow-x-auto font-noto">
           <table className="w-full">
             <thead className="bg-emerald-500/10 border-b border-emerald-200">
               <tr>
@@ -192,7 +192,7 @@ const OrdersTable = ({ orders, onViewDetails }: OrdersTableProps) => {
                     {/* Order ID */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-emerald-600">
+                        <span className="text-sm font-semibold whitespace-nowrap text-emerald-600">
                           #{order.id}
                         </span>
                         <Tooltip>
@@ -217,10 +217,12 @@ const OrdersTable = ({ orders, onViewDetails }: OrdersTableProps) => {
                     {/* Date */}
                     <td className="px-6 py-4">
                       <div>
-                        <p className="text-sm font-medium text-emerald-900">
+                        <p className="text-sm font-medium text-emerald-900 whitespace-nowrap">
                           {order.date}
                         </p>
-                        <p className="text-xs text-emerald-500">{order.time}</p>
+                        <p className="text-xs text-emerald-500 whitespace-nowrap">
+                          {order.time}
+                        </p>
                       </div>
                     </td>
 
@@ -236,7 +238,7 @@ const OrdersTable = ({ orders, onViewDetails }: OrdersTableProps) => {
                               .join("")}
                           </AvatarFallback>
                         </Avatar>
-                        <span className="text-sm font-medium text-emerald-900">
+                        <span className="text-sm font-medium text-emerald-900 ">
                           {order.customer.name}
                         </span>
                       </div>
@@ -246,7 +248,7 @@ const OrdersTable = ({ orders, onViewDetails }: OrdersTableProps) => {
                     <td className="px-6 py-4">
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <span className="text-sm text-emerald-600 cursor-help">
+                          <span className="text-sm text-emerald-600 cursor-help whitespace-nowrap">
                             {order.items.count} item
                             {order.items.count > 1 ? "s" : ""}
                           </span>

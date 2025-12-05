@@ -34,7 +34,7 @@ const StatCard = ({ title, value, icon: Icon, change }: StatCardProps) => {
 
         {/* Value */}
         <div className="mb-3">
-          <h3 className="text-gray-900 text-4xl font-bold tracking-tight">
+          <h3 className="text-gray-900 text-4xl font-space font-bold tracking-tight">
             {value}
           </h3>
         </div>

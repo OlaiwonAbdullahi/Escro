@@ -78,7 +78,9 @@ const Page = () => {
         {/* Page Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-black text-3xl font-bold mb-2">Products</h1>
+            <h1 className="text-black text-3xl font-bold mb-2 font-noto">
+              Products
+            </h1>
             <p className="text-gray-500">
               Manage your store inventory and products
             </p>

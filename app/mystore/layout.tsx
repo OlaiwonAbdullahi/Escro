@@ -4,7 +4,7 @@ import Navbar from "./_components/navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="font-mont">
       <StoreSidebar />
       <div className="flex-1 flex flex-col w-full">
         <Navbar />

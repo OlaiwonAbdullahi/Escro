@@ -32,11 +32,13 @@ const Page = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 font-mont">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-black text-3xl font-bold mb-2">Dashboard</h1>
+          <h1 className="text-black text-3xl font-bold mb-2 font-noto">
+            Dashboard
+          </h1>
           <p className="text-gray-500">
             Welcome back! Here&apos;s what&apos;s happening with your store
             today.
