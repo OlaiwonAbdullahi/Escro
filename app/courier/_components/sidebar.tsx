@@ -2,14 +2,14 @@
 
 import {
   IconLayoutDashboard,
-  IconPackage,
-  IconShoppingCart,
   IconSettings,
   IconUser,
   IconShoppingBag,
   IconLogout,
   IconCurrencyDollar,
   IconMap,
+  IconRoute,
+  IconRoute2,
 } from "@tabler/icons-react";
 import {
   Sidebar,
@@ -34,12 +34,12 @@ const items = [
   {
     title: "Available Deliveries",
     url: "/courier/deliveries",
-    icon: IconPackage,
+    icon: IconRoute,
   },
   {
     title: "My Deliveries",
     url: "/courier/my-deliveries",
-    icon: IconShoppingCart,
+    icon: IconRoute2,
   },
   {
     title: "Earnings",
