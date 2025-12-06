@@ -226,7 +226,7 @@ const NavBar = () => {
 
             <div className="hidden lg:flex items-center gap-3">
               <a
-                href="#signup"
+                href="/signup"
                 className="group relative overflow-hidden flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold hover:shadow-2xl hover:shadow-emerald-500/25 transition-all hover:scale-105 active:scale-95"
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -239,7 +239,7 @@ const NavBar = () => {
 
             <div className="flex lg:hidden items-center gap-3">
               <a
-                href="#signup"
+                href="/signup"
                 className="group flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all active:scale-95"
               >
                 <span className="hidden sm:inline">Get Started</span>
@@ -322,7 +322,7 @@ const NavBar = () => {
                   </span>
                 </a>
                 <a
-                  href="#signup"
+                  href="/signup"
                   onClick={() => setIsOpen(false)}
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/25 transition-all group"
                 >
