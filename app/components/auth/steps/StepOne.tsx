@@ -7,11 +7,8 @@ import {
   Eye,
   EyeOff,
   CheckCircle2,
-  ShieldCheck,
   Circle,
 } from "lucide-react";
-// We are replacing the generic Input/Button with inline styled versions
-// to guarantee the SOTA look without seeing your ui folder.
 
 interface StepOneProps {
   formData: {
@@ -42,7 +39,6 @@ const StepOne: React.FC<StepOneProps> = ({
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
-  // SOTA Password Logic: Granular Requirements
   const getPasswordRequirements = (pass: string) => [
     { label: "8+ Chars", met: pass.length >= 8 },
     { label: "Number", met: /[0-9]/.test(pass) },
@@ -60,16 +56,11 @@ const StepOne: React.FC<StepOneProps> = ({
 
   return (
     <div className="w-full max-w-md mx-auto">
-      {/* --- HEADER: Engineered Feel --- */}
       <div className="mb-10 text-center relative">
-        <div className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-          <ShieldCheck size={14} />
-          Secure Encryption
-        </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 font-mont tracking-tight">
-          Initialize{" "}
+          Account{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
-            Identity
+            Info
           </span>
         </h2>
         <p className="text-zinc-400 font-noto text-sm">
@@ -78,7 +69,6 @@ const StepOne: React.FC<StepOneProps> = ({
       </div>
 
       <form className="space-y-5">
-        {/* --- FULL NAME --- */}
         <div className="group relative">
           <div
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
@@ -102,7 +92,6 @@ const StepOne: React.FC<StepOneProps> = ({
           />
         </div>
 
-        {/* --- EMAIL --- */}
         <div className="group relative">
           <div
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
@@ -126,7 +115,6 @@ const StepOne: React.FC<StepOneProps> = ({
           />
         </div>
 
-        {/* --- PHONE --- */}
         <div className="group relative">
           <div
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
@@ -150,7 +138,6 @@ const StepOne: React.FC<StepOneProps> = ({
           />
         </div>
 
-        {/* --- PASSWORD FIELD with Matrix --- */}
         <div className="space-y-3 pt-2">
           <div className="group relative">
             <div
@@ -184,7 +171,6 @@ const StepOne: React.FC<StepOneProps> = ({
             </button>
           </div>
 
-          {/* The SOTA Security Matrix (Only shows when user interacts or has input) */}
           <div
             className={`overflow-hidden transition-all duration-500 ease-in-out ${
               passwordFocus || formData.password.length > 0
@@ -211,7 +197,7 @@ const StepOne: React.FC<StepOneProps> = ({
                 </div>
               ))}
             </div>
-            {/* Strength Line */}
+
             <div className="h-1 w-full bg-zinc-800 mt-3 rounded-full overflow-hidden">
               <div
                 className={`h-full transition-all duration-500 ease-out ${
@@ -228,7 +214,6 @@ const StepOne: React.FC<StepOneProps> = ({
           </div>
         </div>
 
-        {/* --- CONFIRM PASSWORD --- */}
         <div className="group relative">
           <div
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
@@ -259,26 +244,25 @@ const StepOne: React.FC<StepOneProps> = ({
           </button>
         </div>
 
-        {/* --- ACTIONS --- */}
         <div className="pt-6">
           <button
             onClick={handleSubmit}
             className="w-full relative group overflow-hidden rounded-xl bg-emerald-500 p-4 font-bold text-white shadow-[0_0_20px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 hover:bg-emerald-400 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.6)] hover:scale-[1.01] active:scale-[0.98]"
           >
-            <span className="relative z-10">Initialize Account</span>
-            {/* Shine Effect */}
+            <span className="relative z-10">Continue</span>
+
             <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           </button>
         </div>
 
         <div className="text-center pt-2">
           <p className="text-zinc-500 font-noto text-sm">
-            Already have an identity?{" "}
+            Already have an account?{" "}
             <a
               href="/login"
               className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors border-b border-transparent hover:border-emerald-400"
             >
-              Access Login
+              Login
             </a>
           </p>
         </div>

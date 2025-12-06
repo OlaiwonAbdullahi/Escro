@@ -21,7 +21,6 @@ interface StepThreeProps {
   onBack: () => void;
 }
 
-// Move these OUTSIDE the main component
 const CustomerFields = ({ formData, errors, onChange }: any) => (
   <div className="space-y-6">
     <div className="text-center mb-8">
@@ -317,7 +316,6 @@ const AgencyFields = ({ formData, errors, onChange }: any) => (
   </div>
 );
 
-// Main component
 const StepThree: React.FC<StepThreeProps> = ({
   role,
   formData,

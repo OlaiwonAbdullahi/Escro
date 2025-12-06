@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import StepIndicator from "../components/auth/StepIndicator"; // We will redesign this next to match
+import StepIndicator from "../components/auth/StepIndicator";
 import StepOne from "../components/auth/steps/StepOne";
 import StepTwo from "../components/auth/steps/StepTwo";
 import StepThree from "../components/auth/steps/StepThree";
@@ -12,7 +12,6 @@ export default function SignupPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- FORM STATE (Unchanged) ---
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -42,13 +41,16 @@ export default function SignupPage() {
   const [errors, setErrors] = useState<any>({});
 
   const steps = [
-    { number: 1, title: "Identity", description: "Basic credentials" },
-    { number: 2, title: "Archetype", description: "Select role" },
-    { number: 3, title: "Details", description: "Specifics" },
-    { number: 4, title: "Launch", description: "Review & Start" },
+    { number: 1, title: "Basic Details", description: "Basic credentials" },
+    { number: 2, title: "Choose Role", description: "Select role" },
+    {
+      number: 3,
+      title: "Additional Info",
+      description: "Role-specific details",
+    },
+    { number: 4, title: "Review", description: "Confirm and submit" },
   ];
 
-  // --- HANDLERS (Unchanged logic, just cleaner formatting) ---
   const handleChange = (field: string, value: string | string[]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field])
@@ -61,7 +63,6 @@ export default function SignupPage() {
     setCurrentStep(1);
   };
 
-  // ... Validation Logic (Kept mostly as is, just collapsed for brevity in this view) ...
   const validateStepOne = () => {
     const newErrors: any = {};
     if (!formData.fullName.trim()) newErrors.fullName = "Required";
@@ -81,11 +82,10 @@ export default function SignupPage() {
 
   const validateStepThree = () => {
     const newErrors: any = {};
-    // ... (Your existing validation logic here) ...
-    // Keeping it simple for the display, assuming your logic works
+
     if (formData.role === "customer" && !formData.deliveryAddress)
       newErrors.deliveryAddress = "Required";
-    // ... etc
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -111,21 +111,14 @@ export default function SignupPage() {
 
   return (
     <div className="min-h-screen w-full bg-zinc-950 relative flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
-      {/* --- ATMOSPHERE (Background Effects) --- */}
-
-      {/* 1. The Grid (Engineering Vibe) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      {/* 2. The Spotlight (Glow behind the card) */}
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-900/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* --- THE MAIN STAGE --- */}
       <div className="w-full max-w-2xl relative z-10">
-        {/* Header Section */}
         <div className="text-center mb-10 space-y-2">
           <div className="inline-flex items-center gap-2 mb-4">
-            {/* Logo Placeholder */}
             <div className="h-8 w-8 rounded-lg bg-emerald-500 flex items-center justify-center text-zinc-950 font-bold text-xl">
               E
             </div>
@@ -134,24 +127,17 @@ export default function SignupPage() {
             </span>
           </div>
           <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400 font-mont tracking-tight">
-            Join the Secure Network
+            Create your account
           </h1>
-          <p className="text-zinc-500 font-noto text-sm">
-            Create your account to start trading with complete protection.
-          </p>
         </div>
 
-        {/* Step Indicator Wrapper */}
         <div className="mb-8">
           <StepIndicator steps={steps} currentStep={currentStep} />
         </div>
 
-        {/* --- THE GLASS CARD --- */}
         <div className="relative group rounded-3xl border border-white/5 bg-zinc-900/60 backdrop-blur-xl shadow-2xl transition-all duration-500">
-          {/* Subtle Gradient Border Glow on Hover */}
           <div className="absolute -inset-px bg-gradient-to-b from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
 
-          {/* Inner Content */}
           <div className="relative p-6 sm:p-10">
             {currentStep === 1 && (
               <StepOne
@@ -193,7 +179,6 @@ export default function SignupPage() {
           </div>
         </div>
 
-        {/* Footer / Copyright */}
         <div className="mt-8 text-center">
           <p className="text-xs text-zinc-600 font-noto">
             © 2025 Escro Inc. Secure Transactions Protocol.
@@ -201,7 +186,6 @@ export default function SignupPage() {
         </div>
       </div>
 
-      {/* Demo Creds - Fixed to corner so it doesn't ruin the layout */}
       {currentStep === 1 && (
         <div className="fixed bottom-4 right-4 z-50 opacity-50 hover:opacity-100 transition-opacity">
           <DemoCreds onFillDemo={handleFillDemo} />
