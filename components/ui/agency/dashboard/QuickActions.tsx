@@ -11,7 +11,7 @@ import {
 
 function QuickActions() {
   return (
-    <Card className='min-w-[200px] w-[45%]'>
+    <Card className='w-full md:w-[45%]'>
         <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
         </CardHeader>
