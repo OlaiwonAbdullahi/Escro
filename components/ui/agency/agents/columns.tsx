@@ -1,5 +1,5 @@
 import { BsDot } from "react-icons/bs"
-import { IoCheckmarkDone } from "react-icons/io5"
+import { IoCheckmarkDone } from "react-icons/io5" 
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { LuClock2 } from "react-icons/lu";
 import { TbCancel } from "react-icons/tb";
@@ -20,6 +20,15 @@ export const columns = [
     { field: 'name', 
         headerName: 'Name', 
         flex:1,
+        renderCell: (params:any) =>{
+           const value = params.value
+            return <div className="flex items-center h-full">
+                {params.row.pfp? <img src={params.row.pfp} alt={value} className="w-8 h-8 rounded-full mr-2 object-cover"/> :
+                <span className='w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xl text-gray-500 mr-2'>{value.charAt(0).toUpperCase()}</span>
+                }
+                <span>{value}</span>
+            </div>
+        }
     },
     { field: 'email', 
         headerName: 'Email', 
@@ -40,7 +49,7 @@ export const columns = [
         renderCell: (params:any) =>{
            const value = params.value
             return <div className="flex items-center h-full">
-                <span className={`flex items-center gap-1 ${value==="Verified"?"bg-emerald-700/30 text-emerald-700":value==="Pending"?"bg-yellow-700/30 text-yellow-700":"bg-red-700/30 text-red-700"} w-[fit-content] h-[24px] rounded-lg p-2   `}>{
+                <span className={`flex items-center gap-1 ${value==="Verified"?"bg-emerald-700/30 text-emerald-700":value==="Pending"?"bg-blue-700/30 text-blue-700":"bg-red-700/30 text-red-700"} w-[fit-content] h-[24px] rounded-lg p-2   `}>{
                     value==="Verified" ? <IoCheckmarkDone /> : value==="Pending" ? <LuClock2 /> : <TbCancel />
                 }{value}</span>
             </div>
@@ -69,7 +78,7 @@ function RowActions({agent}: RowActionsProps) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
-  const {agents, setAgents} = useAgencyContext()
+  const {agents, setAgents, setShowAgentInfo, setSelectedAgent} = useAgencyContext()
 
   function handleApprove(){
     const newAgents = agents.map((ag:any)=>{
@@ -107,7 +116,7 @@ function RowActions({agent}: RowActionsProps) {
       >
         <MenuItem className="flex items-center gap-1" onClick={handleApprove}><IoCheckmarkDone />Approve</MenuItem>
         <MenuItem className="flex items-center gap-1" onClick={handleReject}><TbCancel />Reject</MenuItem>
-        <MenuItem className="flex items-center gap-1" onClick={() => console.log(agent)}><AiOutlineEye />View</MenuItem>
+        <MenuItem className="flex items-center gap-1" onClick={() => {setShowAgentInfo(true); setSelectedAgent(agent)}}><AiOutlineEye />View</MenuItem>
       </Menu>
     </ div>
   );

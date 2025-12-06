@@ -6,9 +6,11 @@ import { useAgencyContext } from '../AgencyContext'
 import { IoCloudDownloadOutline } from 'react-icons/io5'
 import FilterOptions from '../agents/FilterOptions'
 import { useGridApiRef/*, gridExportToCsv*/  } from '@mui/x-data-grid'
+import AgentInfo from '../agents/AgentInfo'
+import Stats from '../agents/Stats'
 
 function Agents() {
-  const {agents, setAgents, agentsTableSearchResults, isSearchingAgentsTable} = useAgencyContext()
+  const {agents, setAgents, agentsTableSearchResults, isSearchingAgentsTable, showAgentInfo} = useAgencyContext()
 
 
 
@@ -20,7 +22,10 @@ const exportCSV = () => {
   });
 };
 
-  return (
+  return <>
+  {
+    showAgentInfo && <AgentInfo />
+  }
     <div className='flex flex-col gap-5 p-6 font-mont bg-gray-100 h-[calc(100vh-100px)] overflow-y-auto'>
         <div className='flex items-center justify-between gap-3'>
             <div>
@@ -29,10 +34,11 @@ const exportCSV = () => {
             </div>
             <button onClick={exportCSV} className='flex items-center gap-2 bg-emerald-700 p-3 rounded-lg text-white cursor-pointer'><IoCloudDownloadOutline /> Export Agents</button>
         </div>
+        <Stats />
         <FilterOptions />
         <DataTable apiRef={apiRef} columns={columns} rows={isSearchingAgentsTable ? agentsTableSearchResults : agents} />
     </div>
-  )
+  </>
 }
 
 export default Agents

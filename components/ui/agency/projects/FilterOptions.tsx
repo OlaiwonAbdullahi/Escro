@@ -21,16 +21,16 @@ import { useAgencyContext } from '../AgencyContext';
 
 
 function FilterOptions() {
-    const {agents, setAgents, setAgentsTableSearchResults, setIsSearchingAgentsTable} = useAgencyContext()
+    const {projects, setProjects, setIsSearchingProjects, setprojectsSearchResults} = useAgencyContext()
 
     function handleSearch(value:string){
-        setIsSearchingAgentsTable(true)
-        const newAgents = agents.filter((agent:any)=>{
-            if(agent.name.toLowerCase().includes(value.toLowerCase())){
-                return agent
+        setIsSearchingProjects(true)
+        const newProjects = projects.filter((project:any)=>{
+            if(project.name.toLowerCase().includes(value.toLowerCase())){
+                return project
             }
         })
-        setAgentsTableSearchResults(newAgents)
+        setprojectsSearchResults(newProjects)
     
     
 }
@@ -43,7 +43,7 @@ function FilterOptions() {
               <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Search Agents..."
+                placeholder="Search Projects..."
                 onChange={e=>{handleSearch(e.target.value)}}
                 className="w-full bg-gray-50 shadow-none border-gray-200 rounded-sm text-gray-900 placeholder-gray-400 pl-11 pr-4 py-2.5 h-9 focus:outline-none"
               />

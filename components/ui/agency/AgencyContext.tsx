@@ -20,6 +20,8 @@ export const AgencyContextProvider = ({children}:Props) =>{
     const [services, setServices]= useState(SERVICES)
     const [projects, setProjects] = useState(PROJECTS)
     const [minimize, setMinimize] = useState(true)
+    const [showAgentInfo, setShowAgentInfo] = useState(false)
+    const [selectedAgent, setSelectedAgent] = useState(null)
     const [currentPage, setCurrentPage] = useState("")
      useEffect(() => {
     const gotten = localStorage.getItem("agency-current-page")
@@ -39,6 +41,8 @@ export const AgencyContextProvider = ({children}:Props) =>{
     const [agents, setAgents] = useState(AGENTS)
     const [agentsTableSearchResults, setAgentsTableSearchResults] = useState([])
    const [isSearchingAgentsTable, setIsSearchingAgentsTable] = useState(false)
+   const [projectsSearchResults, setprojectsSearchResults] = useState([])
+   const [isSearchingProjects, setIsSearchingProjects] = useState(false)
     function handleAlert(title:string, type:string){
         setAlertInfo({title, type})
         setShowAlert(true)
@@ -77,7 +81,15 @@ export const AgencyContextProvider = ({children}:Props) =>{
         agentsTableSearchResults,
         setAgentsTableSearchResults,
         isSearchingAgentsTable, 
-        setIsSearchingAgentsTable
+        setIsSearchingAgentsTable,
+        showAgentInfo,  
+        setShowAgentInfo,
+        selectedAgent,
+        setSelectedAgent,
+        isSearchingProjects,
+        setIsSearchingProjects,
+        projectsSearchResults,
+        setprojectsSearchResults
     }
 
     return <AgencyContext.Provider value={values}>

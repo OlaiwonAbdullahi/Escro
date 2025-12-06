@@ -23,7 +23,7 @@ interface DataTableProps {
 
 export default function DataTable({ rows, columns, pageSize = 10, apiRef }: DataTableProps) {
   return (
-    <div className="overflow-y-auto" style={{ width: "100%", height: "100%" }}>
+    <div className="overflow-y-auto" style={{ width: "100%", height: "700px" }}>
       <DataGrid
       apiRef={apiRef}
       className="table"
