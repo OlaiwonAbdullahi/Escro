@@ -227,7 +227,6 @@ const DeliveryMap = ({
           enableHighAccuracy: true,
         },
         trackUserLocation: true,
-        showUserHeading: true,
       }),
       "top-right"
     );
