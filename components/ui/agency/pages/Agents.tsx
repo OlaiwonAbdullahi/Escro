@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import  DataTable  from '../DataTable'
 import { columns } from '../agents/columns'
@@ -11,14 +12,13 @@ function Agents() {
 
 
 
-const apiRef = useGridApiRef();
+const apiRef:any = useGridApiRef();
 
-/*const exportTableAsCSV = () => {
-  gridExportToCsv(apiRef, {
-    fileName: "export",
-    utf8WithBom: true,
+const exportCSV = () => {
+  apiRef.current.exportDataAsCsv({
+    fileName: "my-agents-table",
   });
-};*/
+};
 
   return (
     <div className='flex flex-col gap-5 p-6 font-mont bg-gray-100 h-[calc(100vh-100px)] overflow-y-auto'>
@@ -27,7 +27,7 @@ const apiRef = useGridApiRef();
               <h1 className='text-4xl font-semibold font-noto text-black'>Agents</h1>
               <p className='mt-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, soluta?</p>
             </div>
-            <button className='flex items-center gap-2 bg-emerald-700 p-3 rounded-lg text-white cursor-pointer'><IoCloudDownloadOutline /> Export Agents</button>
+            <button onClick={exportCSV} className='flex items-center gap-2 bg-emerald-700 p-3 rounded-lg text-white cursor-pointer'><IoCloudDownloadOutline /> Export Agents</button>
         </div>
         <FilterOptions />
         <DataTable apiRef={apiRef} columns={columns} rows={isSearchingAgentsTable ? agentsTableSearchResults : agents} />
