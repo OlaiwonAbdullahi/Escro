@@ -1,0 +1,5 @@
+[
+  { "id":"1", "name": "John Doe", "email": "john@example.com", "status":"Active", "verification":"Verified", "joined":"Dec 15, 2025" },
+  { "id":"2", "name": "Jane Smith", "email": "jane@example.com","status":"Inactive", "verification":"Pending", "joined":"Dec 15, 2025" },
+  { "id":"3", "name": "Joomla Fork", "email": "joomla@example.com","status":"Inactive", "verification":"Unverified", "joined":"Dec 15, 2025" }
+]

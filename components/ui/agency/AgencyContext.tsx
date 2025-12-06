@@ -2,6 +2,12 @@
 
 import { usePathname } from "next/navigation"
 import {createContext, useContext, useState, ReactNode, useEffect} from "react"
+import SERVICES from "@/components/ui/agency/data/services.json"
+import PROJECTS from "@/components/ui/agency/data/projects.json"
+import USERINFO from "@/components/ui/agency/data/userInfo.json"
+import CONVERSATIONS from "@/components/ui/agency/data/conversations.json"
+import USERS from "@/components/ui/agency/data/users.json"
+import AGENTS from "@/components/ui/agency/data/agents.json"
 
 interface Props{
     children: ReactNode
@@ -10,30 +16,37 @@ interface Props{
 const AgencyContext = createContext<any>(null)
 
 export const AgencyContextProvider = ({children}:Props) =>{
-   /* const location = usePathname()
-    useEffect(()=>{
-   let path = location
-    if(path==="/"){
-      setCurrentPage("Dashboard")
-    }else{
-      let newPath = path.split("")
-      newPath = newPath.filter(item=>item!="/")
-      path = newPath.join("")
-      setCurrentPage(path)
-    }
-  }, [location])*/
-  
-    /*const [theme, setTheme] = useState<string>(()=>{
-        const gotten = localStorage.getItem("agency-theme")
-        if(gotten){
-            return gotten
-        }else{
-            return "light"
-        }
-    })*/
 
+    const [services, setServices]= useState(SERVICES)
+    const [projects, setProjects] = useState(PROJECTS)
     const [minimize, setMinimize] = useState(true)
-    const [currentPage, setCurrentPage] = useState("Dashboard")
+    const [currentPage, setCurrentPage] = useState("")
+     useEffect(() => {
+    const gotten = localStorage.getItem("agency-current-page")
+    if (gotten) {
+      setCurrentPage(JSON.parse(gotten))
+    }
+  }, [])
+    useEffect(()=>{
+        localStorage.setItem("agency-current-page", JSON.stringify(currentPage))
+    }, [currentPage])
+    const [alertInfo, setAlertInfo] = useState({title:"", type:""})
+    const [showAlert, setShowAlert] = useState(false)
+    const [userInfo, setUserInfo] = useState(USERINFO)
+    const [conversations, setConversations] = useState(CONVERSATIONS)
+    const [isSearching, setIsSearching] = useState(false)
+    const [users, setUsers] = useState(USERS)
+    const [agents, setAgents] = useState(AGENTS)
+    const [agentsTableSearchResults, setAgentsTableSearchResults] = useState([])
+   const [isSearchingAgentsTable, setIsSearchingAgentsTable] = useState(false)
+    function handleAlert(title:string, type:string){
+        setAlertInfo({title, type})
+        setShowAlert(true)
+
+        setTimeout(()=>{
+            setShowAlert(false)
+        }, 3000)
+    }
 
     const values = {
         /*theme,
@@ -41,7 +54,30 @@ export const AgencyContextProvider = ({children}:Props) =>{
         minimize,
         setMinimize,
         currentPage,
-        setCurrentPage
+        setCurrentPage,
+        services,
+        setServices,
+        showAlert,
+        setShowAlert,
+        handleAlert,
+        alertInfo,
+        setAlertInfo,
+        projects,
+        setProjects,
+        userInfo,
+        setUserInfo,
+        conversations,
+        setConversations,
+        isSearching,
+        setIsSearching,
+        users,
+        setUsers,
+        agents,
+        setAgents,
+        agentsTableSearchResults,
+        setAgentsTableSearchResults,
+        isSearchingAgentsTable, 
+        setIsSearchingAgentsTable
     }
 
     return <AgencyContext.Provider value={values}>

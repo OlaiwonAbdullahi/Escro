@@ -1,0 +1,23 @@
+[
+  {
+    "status": "In Progress",
+    "name": "Website Development",
+    "client": "Acme Corp",
+    "date": "Dec 15, 2025",
+    "progress": "50%"
+  },
+  {
+    "status": "Completed",
+    "name": "App Development",
+    "client": "Acme Corp",
+    "date": "Dec 15, 2025",
+    "progress": "10%"
+  },
+  {
+    "status": "Cancelled",
+    "name": "App Development",
+    "client": "Acme Corp",
+    "date": "Dec 15, 2025",
+    "progress": "20%"
+  }
+]
