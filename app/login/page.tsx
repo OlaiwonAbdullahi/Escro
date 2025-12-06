@@ -2,9 +2,14 @@
 
 import React, { useState } from "react";
 import LoginForm from "../components/auth/LoginForm";
+import DemoCredsLogin from "../components/auth/DemoCredsLogin";
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [demoCredentials, setDemoCredentials] = useState<{
+    email: string;
+    password: string;
+  } | null>(null);
 
   const handleLogin = async (data: {
     email: string;
@@ -30,6 +35,10 @@ export default function LoginPage() {
     }, 2000);
   };
 
+  const handleFillDemo = (demoData: { email: string; password: string }) => {
+    setDemoCredentials(demoData);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0F2F2F] via-[#1A4D4D] to-[#0A1F1F] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -41,8 +50,14 @@ export default function LoginPage() {
           </a>
         </div>
 
+        <DemoCredsLogin onFillDemo={handleFillDemo} />
+
         <div className="bg-[#1F2937] rounded-2xl shadow-2xl p-8 border border-[#10B981]/20">
-          <LoginForm onSubmit={handleLogin} isLoading={isLoading} />
+          <LoginForm
+            onSubmit={handleLogin}
+            isLoading={isLoading}
+            initialCredentials={demoCredentials}
+          />
         </div>
 
         <div className="text-center mt-6">
