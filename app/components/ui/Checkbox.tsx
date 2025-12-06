@@ -37,12 +37,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           )}
         </label>
 
-        {/* Error Message */}
         {error && (
           <p className="mt-1 text-sm text-red-500 font-noto ml-8">{error}</p>
         )}
 
-        {/* Helper Text */}
         {helperText && !error && (
           <p className="mt-1 text-sm text-gray-400 font-noto ml-8">
             {helperText}

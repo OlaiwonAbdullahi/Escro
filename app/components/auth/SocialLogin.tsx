@@ -39,7 +39,6 @@ const SocialLogin: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      {/* Divider */}
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-gray-600"></div>
@@ -51,7 +50,6 @@ const SocialLogin: React.FC = () => {
         </div>
       </div>
 
-      {/* Social Login Buttons */}
       <div className="grid grid-cols-2 gap-3">
         {socialProviders.map((provider) => (
           <button
@@ -68,7 +66,6 @@ const SocialLogin: React.FC = () => {
         ))}
       </div>
 
-      {/* Info Text */}
       <p className="text-xs text-center text-gray-500 font-noto">
         By continuing, you agree to our Terms of Service and Privacy Policy
       </p>

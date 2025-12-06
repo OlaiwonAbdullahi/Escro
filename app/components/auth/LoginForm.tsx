@@ -29,7 +29,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   const handleChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
+
     if (errors[field]) {
       setErrors((prev: any) => ({ ...prev, [field]: undefined }));
     }
@@ -38,7 +38,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
   const validateForm = () => {
     const newErrors: any = {};
 
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -46,7 +45,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
       newErrors.email = "Please enter a valid email";
     }
 
-    // Validate password
     if (!formData.password) {
       newErrors.password = "Password is required";
     }
@@ -62,7 +60,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
       if (onSubmit) {
         onSubmit(formData);
       } else {
-        // Default behavior for testing
         console.log("Login data:", formData);
         alert("Login functionality will be connected to Better Auth");
       }
@@ -71,7 +68,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="text-center mb-8">
         <div className="w-16 h-16 bg-[#10B981]/10 rounded-full flex items-center justify-center mx-auto mb-4">
           <LogIn size={32} className="text-[#10B981]" />
@@ -84,7 +80,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
         </p>
       </div>
 
-      {/* Email Field */}
       <Input
         label="Email Address"
         type="email"
@@ -96,7 +91,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
         required
       />
 
-      {/* Password Field */}
       <div>
         <div className="relative">
           <Input
@@ -119,7 +113,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
         </div>
       </div>
 
-      {/* Remember Me & Forgot Password */}
       <div className="flex items-center justify-between">
         <Checkbox
           label="Remember me"
@@ -134,7 +127,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
         </a>
       </div>
 
-      {/* Login Button */}
       <Button
         onClick={handleSubmit}
         variant="primary"
@@ -145,10 +137,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
         Sign In
       </Button>
 
-      {/* Social Login */}
       <SocialLogin />
 
-      {/* Sign Up Link */}
       <div className="text-center pt-4">
         <p className="text-gray-400 font-noto">
           Don't have an account?{" "}
