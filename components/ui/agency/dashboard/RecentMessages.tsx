@@ -13,7 +13,7 @@ import { FiMessageSquare } from 'react-icons/fi'
 
 function RecentMessages() {
   return (
-    <Card className='min-w-[200px] w-[55%]'>
+    <Card className='w-full md:w-[55%]'>
         <CardHeader>
             <CardTitle className='flex items-center justify-between gap-3'>
                 <span>Recent Messages</span>

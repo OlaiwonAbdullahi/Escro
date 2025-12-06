@@ -4,7 +4,7 @@ import QuickActions from './QuickActions'
 
 function DashboardFourth() {
   return (
-    <div className='flex gap-4'>
+    <div className='flex flex-col md:flex-row gap-4'>
         <RecentMessages />
         <QuickActions />
     </div>
