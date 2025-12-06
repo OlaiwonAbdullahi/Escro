@@ -78,28 +78,70 @@ function RowActions({agent}: RowActionsProps) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
-  const {agents, setAgents, setShowAgentInfo, setSelectedAgent} = useAgencyContext()
+  const {agents, setAgents, setShowAgentInfo, setSelectedAgent, isSearchingAgentsTable,  agentsTableSearchResults, setAgentsTableSearchResults} = useAgencyContext()
 
   function handleApprove(){
-    const newAgents = agents.map((ag:any)=>{
-        if(agent===ag){
+    if(isSearchingAgentsTable){
+        const newAgents = agents.map((ag:any)=>{
+        if(agent.name===ag.name){
+            return {...ag, verification:"Verified"}
+        }else{
+            return ag
+        }
+    })
+
+    const newAgentsSearchResults = agentsTableSearchResults.map((ag:any)=>{
+        if(agent.name===ag.name){
+            return {...ag, verification:"Verified"}
+        }else{
+            return ag
+        }
+    })
+    setAgentsTableSearchResults(newAgentsSearchResults)
+    setAgents(newAgents)
+    }else{
+        const newAgents = agents.map((ag:any)=>{
+        if(agent.name===ag.name){
             return {...ag, verification:"Verified"}
         }else{
             return ag
         }
     })
     setAgents(newAgents)
+    }
+    
   }
 
   function handleReject(){
-    const newAgents = agents.map((ag:any)=>{
-        if(agent===ag){
-            return {...ag, verification:"Rejected"}
+    if(isSearchingAgentsTable){
+        const newAgents = agents.map((ag:any)=>{
+        if(agent.name===ag.name){
+            return {...ag, verification:"Unverified"}
+        }else{
+            return ag
+        }
+    })
+
+    const newAgentsSearchResults = agentsTableSearchResults.map((ag:any)=>{
+        if(agent.name===ag.name){
+            return {...ag, verification:"Unverified"}
+        }else{
+            return ag
+        }
+    })
+    
+    setAgentsTableSearchResults(newAgentsSearchResults)
+    setAgents(newAgents)
+    }else{
+        const newAgents = agents.map((ag:any)=>{
+        if(agent.name===ag.name){
+            return {...ag, verification:"Unverified"}
         }else{
             return ag
         }
     })
     setAgents(newAgents)
+    }
   }
 
   return (
