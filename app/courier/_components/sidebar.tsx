@@ -38,7 +38,7 @@ const items = [
   },
   {
     title: "My Deliveries",
-    url: "/courier/my-deliveries",
+    url: "/courier/mydeliveries",
     icon: IconRoute2,
   },
   {
