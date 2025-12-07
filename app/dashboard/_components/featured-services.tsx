@@ -204,7 +204,7 @@ const FeaturedServices = () => {
             </h2>
             <div className="flex items-center gap-1.5 px-3 py-1 bg-violet-500/10 border border-violet-500/20 rounded-full">
               <IconSparkles className="w-4 h-4 text-violet-500" />
-              <span className="text-xs font-semibold text-violet-500 uppercase tracking-wide">
+              <span className="text-xs font-semibold whitespace-nowrap text-violet-500 uppercase tracking-wide">
                 Top Rated
               </span>
             </div>
