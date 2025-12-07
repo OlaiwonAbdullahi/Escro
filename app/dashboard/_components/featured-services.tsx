@@ -213,7 +213,7 @@ const FeaturedServices = () => {
             Professional services from verified experts
           </p>
         </div>
-        <Button className="group flex items-center gap-2 px-5 py-2.5 bg-violet-500/10 hover:bg-violet-500 border border-violet-500/30 hover:border-violet-500 rounded-md text-violet-500 hover:text-white text-sm font-semibold transition-all duration-300">
+        <Button className="group md:flex hidden items-center gap-2 px-5 py-2.5 bg-violet-500/10 hover:bg-violet-500 border border-violet-500/30 hover:border-violet-500 rounded-md text-violet-500 hover:text-white text-sm font-semibold transition-all duration-300">
           Browse All Services
           <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
@@ -389,6 +389,12 @@ const FeaturedServices = () => {
             }`}
           />
         ))}
+      </div>
+      <div className="mt-8">
+        <Button className="group flex md:hidden w-full items-center gap-2 px-5 py-2.5 bg-violet-500/10 hover:bg-violet-500 border border-violet-500/30 hover:border-violet-500 rounded-md text-violet-500 hover:text-white text-sm font-semibold transition-all duration-300">
+          Browse All Services
+          <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+        </Button>
       </div>
 
       {/* Promo Banner */}
