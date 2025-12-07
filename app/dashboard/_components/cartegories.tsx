@@ -78,7 +78,7 @@ const Categories = () => {
   return (
     <section className=" py-8">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 flex-col md:flex-row gap-4">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <h2 className="text-2xl font-bold  font-noto tracking-tight text-black">
@@ -95,7 +95,7 @@ const Categories = () => {
             Explore our curated collection of product categories
           </p>
         </div>
-        <Button className="group flex items-center gap-2 px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500 border border-emerald-500/30 hover:border-emerald-500 rounded-md text-emerald-400 hover:text-white text-sm font-semibold transition-all duration-300">
+        <Button className="group md:flex hidden  items-center gap-2 px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500 border border-emerald-500/30 hover:border-emerald-500 rounded-md text-emerald-400 hover:text-white text-sm font-semibold transition-all duration-300">
           View All
           <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
@@ -148,6 +148,12 @@ const Categories = () => {
             </div>
           );
         })}
+      </div>
+      <div className=" mt-8">
+        <Button className="group flex md:hidden w-full items-center gap-2 px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500 border border-emerald-500/30 hover:border-emerald-500 rounded-md text-emerald-400 hover:text-white text-sm font-semibold transition-all duration-300">
+          View All
+          <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+        </Button>
       </div>
 
       {/* Featured Categories Banner */}
