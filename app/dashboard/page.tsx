@@ -4,7 +4,7 @@ import FeaturedServices from "./_components/featured-services";
 
 const Page = () => {
   return (
-    <div className="min-h-screen px-20">
+    <div className="min-h-screen md:px-20 px-4">
       {/* Welcome Section */}
       <div className="pt-8 pb-2">
         <h1 className="text-3xl font-bold text-black font-noto tracking-tight mb-2">
