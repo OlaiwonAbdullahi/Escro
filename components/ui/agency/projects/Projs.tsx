@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-
 import {
   Card,
   CardContent,
@@ -12,24 +11,23 @@ import {
 import { IoCalendarClearOutline } from 'react-icons/io5'
 import { useAgencyContext } from '../AgencyContext';
 
-function ActiveProjects() {
-    const {projects} = useAgencyContext();
-  return (
-    <Card className='w-full md:w-[55%]'>
-        <CardHeader>
-            <CardTitle>Active Projects</CardTitle>
-        </CardHeader>
-        <CardContent className='flex flex-col gap-3 h-[500px] overflow-y-auto'>
-            {projects.length!=0? projects.map((project:any, index:number) => (
-                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
-            )): <p className='w-full h-full flex items-center justify-center'>No Active Projects</p>}
 
-        </CardContent>
-    </Card>
+function Projs() {
+    const {projects, isSearchingProjects, projectsSearchResults} = useAgencyContext();
+  return (
+    <div className='flex justify-between gap-3 flex-col'>
+        {(projects.length!=0 && isSearchingProjects) ? projectsSearchResults.map((project:any, index:number) => (
+                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+            )):
+            (projects.length!=0 && !isSearchingProjects) ? projects.map((project:any, index:number) => (
+                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+            )):
+            <p className='w-full h-full flex items-center justify-center'>No Active Projects</p>}
+    </div>
   )
 }
 
-export default ActiveProjects
+export default Projs
 
 
 interface ProjectProps{
@@ -42,7 +40,7 @@ interface ProjectProps{
 
 function Project({name, client, progress, date, status}: ProjectProps){
     return (
-        <Card className='shadow-none bg-gray-100/80'>
+        <Card className='shadow-none cursor-pointer bg-white hover:bg-gray-100/80 transition-bg duration-300 ease-in-out'>
             <CardHeader>
                 <CardTitle className='flex items-center justify-between gap-3'>
                     {name}

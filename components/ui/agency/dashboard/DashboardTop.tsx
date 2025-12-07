@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { FaArrowTrendUp } from 'react-icons/fa6'
 import { GoProject } from 'react-icons/go'
@@ -7,8 +8,8 @@ import { MdAttachMoney } from 'react-icons/md'
 
 function DashboardTop() {
   return (
-    <div className='flex gap-5 flex-wrap'>
-      <div className='w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
+    <div className='flex flex-col md:flex-row gap-5 flex-wrap'>
+      <div className='flex-1 w-full md:w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
         <div className='flex items-center justify-between gap-3'>
           <p className='text-gray-700'>Active Projects</p>
           <span className='text-xl bg-green-300/50 w-[40px] h-[40px] flex items-center justify-center text-green-900 rounded-lg'><GoProject /></span>
@@ -20,7 +21,7 @@ function DashboardTop() {
         </div>
       </div>
 
-      <div className='w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
+      <div className='flex-1 w-full md:w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
         <div className='flex items-center justify-between gap-3'>
           <p className='text-gray-700'>Total Revenue</p>
           <span className='text-xl bg-green-300/50 w-[40px] h-[40px] flex items-center justify-center text-green-900 rounded-lg'><MdAttachMoney /></span>
@@ -32,7 +33,7 @@ function DashboardTop() {
         </div>
       </div>
 
-      <div className='w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
+      <div className='flex-1 w-full md:w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
         <div className='flex items-center justify-between gap-3'>
           <p className='text-gray-700'>Pending Hours</p>
           <span className='text-xl bg-green-300/50 w-[40px] h-[40px] flex items-center justify-center text-green-900 rounded-lg'><LuClock4 /></span>
@@ -44,7 +45,7 @@ function DashboardTop() {
         </div>
       </div>
 
-      <div className='w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
+      <div className='flex-1 w-full md:w-[23%] min-w-[200px] bg-white p-5 rounded-lg gap-5 flex flex-col cursor-pointer'>
         <div className='flex items-center justify-between gap-3'>
           <p className='text-gray-700'>Completed</p>
           <span className='text-xl bg-green-300/50 w-[40px] h-[40px] flex items-center justify-center text-green-900 rounded-lg'><IoMdCheckmarkCircleOutline /></span>
