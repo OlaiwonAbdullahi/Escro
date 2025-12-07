@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { BsArrowLeft, BsCameraVideo } from 'react-icons/bs'
 import { CiCamera } from 'react-icons/ci'

@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react'
 import { TbMessageDots } from "react-icons/tb";
 import { TbMessagePlus } from "react-icons/tb";

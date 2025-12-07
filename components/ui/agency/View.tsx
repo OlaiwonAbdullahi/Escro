@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useAgencyContext } from './AgencyContext'
 import Dashboard from './pages/Dashboard'

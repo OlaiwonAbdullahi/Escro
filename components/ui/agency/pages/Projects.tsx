@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Projs from '../projects/Projs'
 import Stats from '../projects/Stats'

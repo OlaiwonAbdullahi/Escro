@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { FaArrowTrendUp } from 'react-icons/fa6'
 import { GoProject } from 'react-icons/go'

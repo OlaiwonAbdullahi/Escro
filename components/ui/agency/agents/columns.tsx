@@ -1,3 +1,4 @@
+"use client"
 import { BsDot } from "react-icons/bs"
 import { IoCheckmarkDone } from "react-icons/io5" 
 import { HiOutlineDotsHorizontal } from "react-icons/hi";

@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import Navigation from '../settings/Navigation'
 import GeneralSettings from '../settings/GeneralSettings';

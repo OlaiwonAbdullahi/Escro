@@ -1,3 +1,4 @@
+"use client"
 import { IconBuilding } from '@tabler/icons-react';
 import React, { useState } from 'react'
 import { TbCancel } from 'react-icons/tb';

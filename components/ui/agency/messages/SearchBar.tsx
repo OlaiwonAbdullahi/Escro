@@ -1,22 +1,23 @@
+"use client"
 import React, { useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { LuUserRoundSearch } from "react-icons/lu";
 import { IoPersonOutline } from 'react-icons/io5';
 import { useAgencyContext } from '../AgencyContext';
 
-function SearchBar({setConversation, setSelectedSomeone}) {
+function SearchBar({setConversation, setSelectedSomeone}:any) {
   const {users, setUsers, isSearching, setIsSearching, conversations, userInfo} = useAgencyContext()
   const [searchResults, setSearchResults] = useState("")
 
-  function handleSearch(value){
+  function handleSearch(value: string){
     if(value){
       setIsSearching(true)
-      const newResults = users.filter(item=>{
+      const newResults = users.filter((item:any)=>{
         return (item.name.toLowerCase().includes(value.toLowerCase()) || item.userName.toLowerCase().includes(value.toLowerCase())) && item.userName != userInfo.userName
       }) //looks for a matching name or username while also automatically removing the currrent user from the search
 
       if(newResults.length===0){ //if a match cant be found in users, check the conversations
-        const newResultsGottenFromConversations = conversations.filter(item=>{
+        const newResultsGottenFromConversations = conversations.filter((item:any)=>{
           return item.name.toLowerCase().includes(value.toLowerCase())
         })
         //console.log(newResultsGottenFromConversations)
@@ -47,10 +48,10 @@ export default SearchBar
 
 
 
-function SearchResults({results, setConversation, setSelectedSomeone}) {  
+function SearchResults({results, setConversation, setSelectedSomeone}:any) {  
   const {setIsSearching, conversations} = useAgencyContext()
-  function handleSelectConversation(item){
-    const existingConversation = conversations.find(conv=>conv.id===item.id) //checks if an existing conversation exists
+  function handleSelectConversation(item:any){
+    const existingConversation = conversations.find((conv:any)=>conv.id===item.id) //checks if an existing conversation exists
     if(existingConversation){
       setConversation(existingConversation) //sets the conversation to the existing one if it exists
     }else{
@@ -59,7 +60,7 @@ function SearchResults({results, setConversation, setSelectedSomeone}) {
 }
 
   return <div className='z-10 absolute top-16 bg-white p-6 shadow-lg w-full h-[200px] flex flex-col gap-2 overflow-y-auto'>
-    {results.length!=0 ? results.map((item, index)=>{
+    {results.length!=0 ? results.map((item:any, index:any)=>{
       return <div onClick={()=>{setSelectedSomeone(true); handleSelectConversation(item); setIsSearching(false)}} key={item.id} className='flex cursor-pointer rounded-lg gap-4 items-center bg-gray-500/15 p-3'>
         {
           item.pfp ? <img className='w-[40px] h-[40px] rounded-full' src={item.pfp} alt={item.name} />:

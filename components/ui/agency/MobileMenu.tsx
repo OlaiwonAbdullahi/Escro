@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { TbShoppingBag } from 'react-icons/tb'
 import { useAgencyContext } from './AgencyContext'
