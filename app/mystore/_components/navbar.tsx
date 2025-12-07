@@ -1,6 +1,6 @@
 "use client";
 
-import { IconSearch, IconBell } from "@tabler/icons-react";
+import { IconSearch, IconMenu2 } from "@tabler/icons-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 interface NavbarProps {
   userName?: string;
@@ -19,6 +20,12 @@ const Navbar = ({ userName = "John" }: NavbarProps) => {
   return (
     <nav className="bg-emerald-900 border-b border-gray-700 px-6 py-5 sticky top-0 z-10">
       <div className="flex items-center justify-between gap-6">
+        {/* Mobile Sidebar Toggle */}
+        <SidebarTrigger
+          className="lg:hidden p-2 hover:bg-emerald-500/10 cursor-pointer rounded-md text-gray-300  hover:text-emerald-500  transition-all"
+          size={"lg"}
+        />
+
         {/* Search Bar */}
         <div className=""></div>
 

@@ -10,17 +10,20 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { IoCalendarClearOutline } from 'react-icons/io5'
+import { useAgencyContext } from '../AgencyContext';
 
 function ActiveProjects() {
+    const {projects} = useAgencyContext();
   return (
-    <Card className='min-w-[200px] w-[55%]'>
+    <Card className='w-full md:w-[55%]'>
         <CardHeader>
             <CardTitle>Active Projects</CardTitle>
         </CardHeader>
-        <CardContent className='flex flex-col gap-3 max-h-[430px] overflow-y-auto'>
-            <Project status='In Progress' name='Website Development' client="Acme Corp" date="Dec 15, 2025" progress={"50%"} />
-            <Project status='Completed' name='App Development' client="Acme Corp" date="Dec 15, 2025" progress={"20%"} />
-            
+        <CardContent className='flex flex-col gap-3 h-[500px] overflow-y-auto'>
+            {projects.length!=0? projects.map((project:any, index:number) => (
+                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+            )): <p className='w-full h-full flex items-center justify-center'>No Active Projects</p>}
+
         </CardContent>
     </Card>
   )
@@ -43,7 +46,7 @@ function Project({name, client, progress, date, status}: ProjectProps){
             <CardHeader>
                 <CardTitle className='flex items-center justify-between gap-3'>
                     {name}
-                    <span className={`bg-${status==="In Progress"?"blue":status==="Completed"?"green":"red"}-300/50 p-1 px-2 rounded-lg text-${status==="In Progress"?"blue":status==="Completed"?"green":"red"}-900`}>{status}</span>
+                    <span className={`${status==="In Progress"?"bg-blue-300/50":status==="Completed"?"bg-green-300/50":"bg-red-300/50"} p-1 px-2 rounded-lg ${status==="In Progress"?"text-blue-900":status==="Completed"?"text-green-900":"text-red-900"}`}>{status}</span>
                 </CardTitle>
                 <CardDescription>{client}</CardDescription>
             </CardHeader>
@@ -54,7 +57,7 @@ function Project({name, client, progress, date, status}: ProjectProps){
                         <span>{progress}</span>
                     </div>
                     <div className='mt-2 w-full h-[10px] flex items-center rounded-lg bg-gray-200'>
-                        <span className={`block w-[${progress}] rounded-lg h-full bg-blue-500`} />
+                        <span style={{width: progress}} className={`flex rounded-lg h-full bg-blue-500 transition-w duration-300 ease-in-out`} />
                     </div>
                     <div className='flex items-center mt-4 gap-2'>
                         <IoCalendarClearOutline />
