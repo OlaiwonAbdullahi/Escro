@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
@@ -12,17 +12,29 @@ interface LoginFormProps {
     rememberMe: boolean;
   }) => void;
   isLoading?: boolean;
+  initialCredentials?: { email: string; password: string } | null;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({
   onSubmit,
   isLoading = false,
+  initialCredentials = null,
 }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: initialCredentials?.email || "",
+    password: initialCredentials?.password || "",
     rememberMe: false,
   });
+
+  React.useEffect(() => {
+    if (initialCredentials) {
+      setFormData((prev) => ({
+        ...prev,
+        email: initialCredentials.email,
+        password: initialCredentials.password,
+      }));
+    }
+  }, [initialCredentials]);
 
   const [errors, setErrors] = useState<any>({});
   const [showPassword, setShowPassword] = useState(false);

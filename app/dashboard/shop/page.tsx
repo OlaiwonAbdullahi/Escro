@@ -207,7 +207,7 @@ const Page = () => {
           </h1>
           <div className="flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
             <IconShoppingCart className="w-4 h-4 text-emerald-500" />
-            <span className="text-xs font-semibold text-emerald-500 uppercase tracking-wide">
+            <span className="text-xs font-semibold whitespace-nowrap text-emerald-500 uppercase tracking-wide">
               {products.length}+ Products
             </span>
           </div>
@@ -392,7 +392,7 @@ const Page = () => {
           </h2>
           <div className="flex items-center gap-1.5 px-3 py-1 bg-red-500/10 border border-red-500/20 rounded-full">
             <IconFlame className="w-4 h-4 text-red-500" />
-            <span className="text-xs font-semibold text-red-500 uppercase tracking-wide">
+            <span className="text-xs font-semibold whitespace-nowrap text-red-500 uppercase tracking-wide">
               Hot Deals
             </span>
           </div>

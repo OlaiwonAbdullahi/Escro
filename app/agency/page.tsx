@@ -12,7 +12,7 @@ function page() {
     <AgencyContextProvider>
       <div className='h-screen w-full flex'>
         <Sidebar />
-        <div className='flex flex-col w-[80vw]'>
+        <div className='flex flex-col w-full md:w-[85vw]'>
           <Header />
           <View />
         </div>

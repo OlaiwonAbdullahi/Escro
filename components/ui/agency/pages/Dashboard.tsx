@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import DashboardTop from '../dashboard/DashboardTop'
 import { ChartBarDefault } from '../BarChart'
