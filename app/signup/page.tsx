@@ -110,23 +110,23 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-zinc-950 relative flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <div className="min-h-screen w-full bg-white relative flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none" />
 
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-900/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="w-full max-w-2xl relative z-10">
         <div className="text-center mb-10 space-y-2">
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="h-8 w-8 rounded-lg bg-emerald-500 flex items-center justify-center text-zinc-950 font-bold text-xl">
+            <div className="h-8 w-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold text-xl">
               E
             </div>
-            <span className="text-2xl font-bold text-white tracking-tight font-mont">
+            <span className="text-2xl font-bold text-gray-900 tracking-tight font-mont">
               Escro
             </span>
           </div>
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400 font-mont tracking-tight">
+          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 font-mont tracking-tight">
             Create your account
           </h1>
         </div>
@@ -135,9 +135,7 @@ export default function SignupPage() {
           <StepIndicator steps={steps} currentStep={currentStep} />
         </div>
 
-        <div className="relative group rounded-3xl border border-white/5 bg-zinc-900/60 backdrop-blur-xl shadow-2xl transition-all duration-500">
-          <div className="absolute -inset-px bg-gradient-to-b from-emerald-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
-
+        <div className="relative group rounded-3xl border border-gray-200 bg-white/90 backdrop-blur-xl shadow-xl transition-all duration-500">
           <div className="relative p-6 sm:p-10">
             {currentStep === 1 && (
               <StepOne
@@ -180,7 +178,7 @@ export default function SignupPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-xs text-zinc-600 font-noto">
+          <p className="text-xs text-gray-500 font-noto">
             © 2025 Escro Inc. Secure Transactions Protocol.
           </p>
         </div>

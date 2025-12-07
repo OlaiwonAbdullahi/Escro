@@ -57,14 +57,14 @@ const StepOne: React.FC<StepOneProps> = ({
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="mb-10 text-center relative">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 font-mont tracking-tight">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 font-mont tracking-tight">
           Account{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
             Info
           </span>
         </h2>
-        <p className="text-zinc-400 font-noto text-sm">
-          Step 01 <span className="text-zinc-600 px-2">/</span> 04
+        <p className="text-gray-500 font-noto text-sm">
+          Step 01 <span className="text-gray-300 px-2">/</span> 04
         </p>
       </div>
 
@@ -74,7 +74,7 @@ const StepOne: React.FC<StepOneProps> = ({
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
               errors.fullName
                 ? "text-red-500"
-                : "text-zinc-500 group-focus-within:text-emerald-400"
+                : "text-gray-400 group-focus-within:text-emerald-500"
             }`}
           >
             <User size={20} />
@@ -84,10 +84,10 @@ const StepOne: React.FC<StepOneProps> = ({
             placeholder="Full Name"
             value={formData.fullName}
             onChange={(e) => onChange("fullName", e.target.value)}
-            className={`w-full bg-zinc-900/50 text-white placeholder-zinc-600 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
+            className={`w-full bg-gray-50 text-gray-900 placeholder-gray-400 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
               errors.fullName
-                ? "border-red-500/50 focus:border-red-500 bg-red-500/5"
-                : "border-zinc-800 focus:border-emerald-500 focus:bg-zinc-900 focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
+                ? "border-red-500/50 focus:border-red-500 bg-red-50"
+                : "border-gray-200 focus:border-emerald-500 focus:bg-white focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
             }`}
           />
         </div>
@@ -97,7 +97,7 @@ const StepOne: React.FC<StepOneProps> = ({
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
               errors.email
                 ? "text-red-500"
-                : "text-zinc-500 group-focus-within:text-emerald-400"
+                : "text-gray-400 group-focus-within:text-emerald-500"
             }`}
           >
             <Mail size={20} />
@@ -107,10 +107,10 @@ const StepOne: React.FC<StepOneProps> = ({
             placeholder="Email Address"
             value={formData.email}
             onChange={(e) => onChange("email", e.target.value)}
-            className={`w-full bg-zinc-900/50 text-white placeholder-zinc-600 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
+            className={`w-full bg-gray-50 text-gray-900 placeholder-gray-400 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
               errors.email
-                ? "border-red-500/50 focus:border-red-500 bg-red-500/5"
-                : "border-zinc-800 focus:border-emerald-500 focus:bg-zinc-900 focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
+                ? "border-red-500/50 focus:border-red-500 bg-red-50"
+                : "border-gray-200 focus:border-emerald-500 focus:bg-white focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
             }`}
           />
         </div>
@@ -120,7 +120,7 @@ const StepOne: React.FC<StepOneProps> = ({
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
               errors.phone
                 ? "text-red-500"
-                : "text-zinc-500 group-focus-within:text-emerald-400"
+                : "text-gray-400 group-focus-within:text-emerald-500"
             }`}
           >
             <Phone size={20} />
@@ -130,10 +130,10 @@ const StepOne: React.FC<StepOneProps> = ({
             placeholder="+234 800 000 0000"
             value={formData.phone}
             onChange={(e) => onChange("phone", e.target.value)}
-            className={`w-full bg-zinc-900/50 text-white placeholder-zinc-600 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
+            className={`w-full bg-gray-50 text-gray-900 placeholder-gray-400 pl-12 pr-4 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
               errors.phone
-                ? "border-red-500/50 focus:border-red-500 bg-red-500/5"
-                : "border-zinc-800 focus:border-emerald-500 focus:bg-zinc-900 focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
+                ? "border-red-500/50 focus:border-red-500 bg-red-50"
+                : "border-gray-200 focus:border-emerald-500 focus:bg-white focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
             }`}
           />
         </div>
@@ -144,7 +144,7 @@ const StepOne: React.FC<StepOneProps> = ({
               className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
                 errors.password
                   ? "text-red-500"
-                  : "text-zinc-500 group-focus-within:text-emerald-400"
+                  : "text-gray-400 group-focus-within:text-emerald-500"
               }`}
             >
               <Lock size={20} />
@@ -156,16 +156,16 @@ const StepOne: React.FC<StepOneProps> = ({
               onFocus={() => setPasswordFocus(true)}
               onBlur={() => setPasswordFocus(false)}
               onChange={(e) => onChange("password", e.target.value)}
-              className={`w-full bg-zinc-900/50 text-white placeholder-zinc-600 pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
+              className={`w-full bg-gray-50 text-gray-900 placeholder-gray-400 pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
                 errors.password
-                  ? "border-red-500/50 focus:border-red-500 bg-red-500/5"
-                  : "border-zinc-800 focus:border-emerald-500 focus:bg-zinc-900 focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
+                  ? "border-red-500/50 focus:border-red-500 bg-red-50"
+                  : "border-gray-200 focus:border-emerald-500 focus:bg-white focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
               }`}
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -178,19 +178,19 @@ const StepOne: React.FC<StepOneProps> = ({
                 : "max-h-0 opacity-0"
             }`}
           >
-            <div className="bg-zinc-900/80 rounded-lg p-4 border border-zinc-800 grid grid-cols-2 gap-3">
+            <div className="bg-gray-100 rounded-lg p-4 border border-gray-200 grid grid-cols-2 gap-3">
               {requirements.map((req, idx) => (
                 <div
                   key={idx}
                   className="flex items-center gap-2 text-xs font-medium transition-colors duration-300"
                 >
                   {req.met ? (
-                    <CheckCircle2 size={14} className="text-emerald-400" />
+                    <CheckCircle2 size={14} className="text-emerald-500" />
                   ) : (
-                    <Circle size={14} className="text-zinc-600" />
+                    <Circle size={14} className="text-gray-300" />
                   )}
                   <span
-                    className={req.met ? "text-emerald-100" : "text-zinc-500"}
+                    className={req.met ? "text-emerald-700" : "text-gray-500"}
                   >
                     {req.label}
                   </span>
@@ -198,7 +198,7 @@ const StepOne: React.FC<StepOneProps> = ({
               ))}
             </div>
 
-            <div className="h-1 w-full bg-zinc-800 mt-3 rounded-full overflow-hidden">
+            <div className="h-1 w-full bg-gray-200 mt-3 rounded-full overflow-hidden">
               <div
                 className={`h-full transition-all duration-500 ease-out ${
                   strengthScore <= 1
@@ -207,7 +207,7 @@ const StepOne: React.FC<StepOneProps> = ({
                     ? "bg-amber-500 w-2/4"
                     : strengthScore === 3
                     ? "bg-blue-500 w-3/4"
-                    : "bg-emerald-500 w-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                    : "bg-emerald-500 w-full shadow-[0_0_10px_rgba(16,185,129,0.3)]"
                 }`}
               />
             </div>
@@ -219,7 +219,7 @@ const StepOne: React.FC<StepOneProps> = ({
             className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
               errors.confirmPassword
                 ? "text-red-500"
-                : "text-zinc-500 group-focus-within:text-emerald-400"
+                : "text-gray-400 group-focus-within:text-emerald-500"
             }`}
           >
             <Lock size={20} />
@@ -229,16 +229,16 @@ const StepOne: React.FC<StepOneProps> = ({
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={(e) => onChange("confirmPassword", e.target.value)}
-            className={`w-full bg-zinc-900/50 text-white placeholder-zinc-600 pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
+            className={`w-full bg-gray-50 text-gray-900 placeholder-gray-400 pl-12 pr-12 py-4 rounded-xl border-2 outline-none transition-all duration-300 font-medium ${
               errors.confirmPassword
-                ? "border-red-500/50 focus:border-red-500 bg-red-500/5"
-                : "border-zinc-800 focus:border-emerald-500 focus:bg-zinc-900 focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
+                ? "border-red-500/50 focus:border-red-500 bg-red-50"
+                : "border-gray-200 focus:border-emerald-500 focus:bg-white focus:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]"
             }`}
           />
           <button
             type="button"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
           >
             {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -256,11 +256,11 @@ const StepOne: React.FC<StepOneProps> = ({
         </div>
 
         <div className="text-center pt-2">
-          <p className="text-zinc-500 font-noto text-sm">
+          <p className="text-gray-500 font-noto text-sm">
             Already have an account?{" "}
             <a
               href="/login"
-              className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors border-b border-transparent hover:border-emerald-400"
+              className="text-emerald-500 hover:text-emerald-600 font-semibold transition-colors border-b border-transparent hover:border-emerald-500"
             >
               Login
             </a>

@@ -9,8 +9,10 @@ import {
   FileText,
   Briefcase,
   AlertCircle,
+  ChevronRight,
+  ScrollText,
+  Loader2,
 } from "lucide-react";
-import Button from "../../ui/Button";
 
 interface StepFourProps {
   formData: any;
@@ -18,6 +20,55 @@ interface StepFourProps {
   onBack: () => void;
   isLoading?: boolean;
 }
+
+const getTheme = (role: string) => {
+  switch (role) {
+    case "store_owner":
+      return {
+        text: "text-amber-600",
+        bg: "bg-amber-500",
+        border: "border-amber-500/30",
+        glow: "shadow-amber-500/20",
+      };
+    case "courier":
+      return {
+        text: "text-blue-600",
+        bg: "bg-blue-500",
+        border: "border-blue-500/30",
+        glow: "shadow-blue-500/20",
+      };
+    case "agency":
+      return {
+        text: "text-violet-600",
+        bg: "bg-violet-500",
+        border: "border-violet-500/30",
+        glow: "shadow-violet-500/20",
+      };
+    default:
+      return {
+        text: "text-emerald-600",
+        bg: "bg-emerald-500",
+        border: "border-emerald-500/30",
+        glow: "shadow-emerald-500/20",
+      };
+  }
+};
+
+const ManifestRow = ({ icon, label, value, theme }: any) => (
+  <div className="flex items-center justify-between py-3 group hover:bg-gray-50 px-2 rounded-lg transition-colors">
+    <div className="flex items-center gap-3 text-gray-500">
+      <div className={`transition-colors group-hover:${theme.text} opacity-70`}>
+        {icon}
+      </div>
+      <span className="text-xs font-bold uppercase tracking-wider">
+        {label}
+      </span>
+    </div>
+    <span className="text-sm font-mono text-gray-900 text-right font-medium max-w-[60%] truncate">
+      {value || <span className="text-gray-400 italic">Not provided</span>}
+    </span>
+  </div>
+);
 
 const StepFour: React.FC<StepFourProps> = ({
   formData,
@@ -28,329 +79,296 @@ const StepFour: React.FC<StepFourProps> = ({
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [termsError, setTermsError] = useState("");
 
+  const theme = getTheme(formData.role);
+
   const handleSubmit = () => {
     if (!acceptedTerms) {
-      setTermsError("You must accept the Terms & Conditions to continue");
+      setTermsError("Acknowledgement required");
       return;
     }
     setTermsError("");
     onSubmit();
   };
 
-  const getRoleName = (role: string) => {
-    const roleMap: any = {
-      customer: "Customer",
-      store_owner: "Store Owner",
-      courier: "Courier",
-      agency: "Agency",
-    };
-    return roleMap[role] || role;
-  };
-
   const renderRoleSpecificData = () => {
     switch (formData.role) {
       case "customer":
         return (
-          <div className="space-y-3">
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="Delivery Address"
+          <>
+            <ManifestRow
+              icon={<MapPin size={16} />}
+              label="Delivery Addr"
               value={formData.deliveryAddress}
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="City"
-              value={formData.city}
+            <ManifestRow
+              icon={<MapPin size={16} />}
+              label="City / State"
+              value={`${formData.city}, ${formData.state}`}
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="State"
-              value={formData.state}
-            />
-          </div>
+          </>
         );
-
       case "store_owner":
         return (
-          <div className="space-y-3">
-            <DataRow
-              icon={<Building size={18} />}
+          <>
+            <ManifestRow
+              icon={<Building size={16} />}
               label="Business Name"
               value={formData.businessName}
+              theme={theme}
             />
-            <DataRow
-              icon={<FileText size={18} />}
-              label="Registration Number"
+            <ManifestRow
+              icon={<FileText size={16} />}
+              label="RC Number"
               value={formData.businessRegNumber}
+              theme={theme}
             />
-            <DataRow
-              icon={<Briefcase size={18} />}
-              label="Store Category"
+            <ManifestRow
+              icon={<Briefcase size={16} />}
+              label="Category"
               value={formData.storeCategory}
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="Business Address"
+            <ManifestRow
+              icon={<MapPin size={16} />}
+              label="HQ Address"
               value={formData.businessAddress}
+              theme={theme}
             />
-            {formData.taxId && (
-              <DataRow
-                icon={<FileText size={18} />}
-                label="Tax ID"
-                value={formData.taxId}
-              />
-            )}
-          </div>
+          </>
         );
-
       case "courier":
         return (
-          <div className="space-y-3">
-            <DataRow
-              icon={<Briefcase size={18} />}
-              label="Vehicle Type"
+          <>
+            <ManifestRow
+              icon={<Briefcase size={16} />}
+              label="Vehicle"
               value={formData.vehicleType}
+              theme={theme}
             />
-            <DataRow
-              icon={<FileText size={18} />}
-              label="License Number"
+            <ManifestRow
+              icon={<FileText size={16} />}
+              label="License ID"
               value={formData.licenseNumber}
+              theme={theme}
             />
-            <DataRow
-              icon={<FileText size={18} />}
-              label="Vehicle Reg Number"
+            <ManifestRow
+              icon={<Briefcase size={16} />}
+              label="Plate No."
               value={formData.vehicleRegNumber}
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="Working Area"
+            <ManifestRow
+              icon={<MapPin size={16} />}
+              label="Zone"
               value={formData.workingArea}
+              theme={theme}
             />
-          </div>
+          </>
         );
-
       case "agency":
         return (
-          <div className="space-y-3">
-            <DataRow
-              icon={<Building size={18} />}
+          <>
+            <ManifestRow
+              icon={<Building size={16} />}
               label="Agency Name"
               value={formData.agencyName}
+              theme={theme}
             />
-            <DataRow
-              icon={<FileText size={18} />}
-              label="Registration Number"
+            <ManifestRow
+              icon={<FileText size={16} />}
+              label="Reg Number"
               value={formData.agencyRegNumber}
+              theme={theme}
             />
-            <DataRow
-              icon={<User size={18} />}
-              label="Number of Couriers"
+            <ManifestRow
+              icon={<User size={16} />}
+              label="Fleet Size"
               value={formData.courierCount}
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="Service Areas"
+            <ManifestRow
+              icon={<MapPin size={16} />}
+              label="Territories"
               value={
                 Array.isArray(formData.serviceAreas)
                   ? formData.serviceAreas.join(", ")
                   : formData.serviceAreas
               }
+              theme={theme}
             />
-            <DataRow
-              icon={<MapPin size={18} />}
-              label="Office Address"
-              value={formData.officeAddress}
-            />
-          </div>
+          </>
         );
-
       default:
         return null;
     }
   };
 
   return (
-    <div className="space-y-6">
+    <div className="w-full animate-in fade-in zoom-in-95 duration-500">
       <div className="text-center mb-8">
-        <div className="w-16 h-16 bg-[#10B981]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle size={32} className="text-[#10B981]" />
+        <div
+          className={`w-14 h-14 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 border ${theme.border} shadow-lg`}
+        >
+          <CheckCircle size={32} className={theme.text} />
         </div>
-        <h2 className="text-3xl font-bold text-white mb-2 font-mont">
+        <h2 className="text-3xl font-bold text-gray-900 mb-2 font-mont tracking-tight">
           Review Your Information
         </h2>
-        <p className="text-gray-400 font-noto">
+        <p className="text-gray-500 font-noto text-sm">
           Please verify all details before submitting
         </p>
       </div>
 
-      {/* Account Information Section */}
-      <div className="bg-[#0F2F2F] border border-[#10B981]/20 rounded-xl p-6">
-        <h3 className="text-lg font-bold text-white mb-4 font-mont flex items-center gap-2">
-          <User size={20} className="text-[#10B981]" />
-          Account Information
-        </h3>
-        <div className="space-y-3">
-          <DataRow
-            icon={<User size={18} />}
-            label="Full Name"
-            value={formData.fullName}
-          />
-          <DataRow
-            icon={<Mail size={18} />}
-            label="Email"
-            value={formData.email}
-          />
-          <DataRow
-            icon={<Phone size={18} />}
-            label="Phone"
-            value={formData.phone}
-          />
-          <DataRow
-            icon={<Briefcase size={18} />}
-            label="Role"
-            value={getRoleName(formData.role)}
-          />
-        </div>
-      </div>
-
-      {/* Role-Specific Information Section */}
-      <div className="bg-[#0F2F2F] border border-[#10B981]/20 rounded-xl p-6">
-        <h3 className="text-lg font-bold text-white mb-4 font-mont flex items-center gap-2">
-          <FileText size={20} className="text-[#10B981]" />
-          {getRoleName(formData.role)} Information
-        </h3>
-        {renderRoleSpecificData()}
-      </div>
-
-      {/* Terms & Conditions */}
-      <div className="bg-[#0F2F2F] border border-[#10B981]/20 rounded-xl p-6">
-        <h3 className="text-lg font-bold text-white mb-4 font-mont">
-          Terms & Conditions
-        </h3>
-
-        <div className="bg-[#1F2937] rounded-lg p-4 max-h-48 overflow-y-auto mb-4 text-sm text-gray-300 font-noto space-y-2">
-          <p className="font-semibold text-white">
-            Escro Platform Terms of Service
-          </p>
-
-          <p>
-            <strong>1. Account Registration:</strong> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
-
-          <p>
-            <strong>2. Escrow Protection:</strong> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
-
-          <p>
-            <strong>3. User Conduct:</strong> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
-
-          <p>
-            <strong>4. Privacy:</strong> Lorem ipsum dolor sit amet consectetur
-            adipisicing elit.
-          </p>
-
-          <p>
-            <strong>5. Fees:</strong> Lorem ipsum dolor sit amet consectetur
-            adipisicing elit.
-          </p>
-
-          <p>
-            <strong>6. Dispute Resolution:</strong> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
-
-          <p>
-            <strong>7. Termination:</strong> Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-          </p>
-        </div>
-
-        <label className="flex items-start space-x-3 cursor-pointer group">
-          <input
-            type="checkbox"
-            checked={acceptedTerms}
-            onChange={(e) => {
-              setAcceptedTerms(e.target.checked);
-              if (e.target.checked) setTermsError("");
-            }}
-            className="w-5 h-5 mt-0.5 text-[#10B981] bg-gray-700 border-gray-600 rounded focus:ring-[#10B981] focus:ring-2"
-          />
-          <span className="text-sm text-gray-300 font-noto">
-            I have read and agree to the{" "}
-            <a
-              href="#"
-              className="text-[#10B981] hover:text-[#059669] font-semibold"
-            >
-              Terms & Conditions
-            </a>{" "}
-            and{" "}
-            <a
-              href="#"
-              className="text-[#10B981] hover:text-[#059669] font-semibold"
-            >
-              Privacy Policy
-            </a>
-          </span>
-        </label>
-
-        {termsError && (
-          <div className="flex items-center gap-2 mt-3 text-red-500 text-sm font-noto">
-            <AlertCircle size={16} />
-            <span>{termsError}</span>
+      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden mb-8 shadow-sm">
+        <div className="p-6">
+          <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <User size={14} /> Account Information
+          </h3>
+          <div className="space-y-1">
+            <ManifestRow
+              icon={<User size={16} />}
+              label="Full Name"
+              value={formData.fullName}
+              theme={theme}
+            />
+            <ManifestRow
+              icon={<Mail size={16} />}
+              label="Email"
+              value={formData.email}
+              theme={theme}
+            />
+            <ManifestRow
+              icon={<Phone size={16} />}
+              label="Phone"
+              value={formData.phone}
+              theme={theme}
+            />
           </div>
-        )}
+        </div>
+
+        <div className="relative h-px bg-gray-100 w-full flex items-center justify-between">
+          <div className="absolute -left-2 w-4 h-4 bg-white rounded-full border border-gray-200" />{" "}
+          <div className="w-full border-t-2 border-dashed border-gray-300" />
+          <div className="absolute -right-2 w-4 h-4 bg-white rounded-full border border-gray-200" />{" "}
+        </div>
+
+        <div className="p-6 bg-gray-50">
+          <h3
+            className={`text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2 ${theme.text}`}
+          >
+            <Briefcase size={14} /> {formData.role.replace("_", " ")} Profile
+          </h3>
+          <div className="space-y-1">{renderRoleSpecificData()}</div>
+        </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex gap-4 pt-4">
-        <Button
+      <div
+        className={`relative border rounded-xl p-5 mb-8 transition-all duration-300 ${
+          acceptedTerms
+            ? `${theme.border} bg-white border-2`
+            : "border-gray-200 bg-gray-50"
+        }`}
+      >
+        <div className="flex items-center gap-2 mb-3">
+          <ScrollText
+            size={16}
+            className={acceptedTerms ? theme.text : "text-gray-400"}
+          />
+          <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+            Terms of Service Protocol
+          </h4>
+        </div>
+
+        <div className="h-24 overflow-y-auto bg-gray-100 rounded-lg p-3 border border-gray-200 text-xs font-mono text-gray-600 leading-relaxed mb-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+          <p>
+            1. INITIALIZATION: By accessing the Escro Network, you agree to
+            bound by this platform protocols.
+          </p>
+          <p className="mt-2">
+            2. ESCROW LOCK: Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit.
+          </p>
+          <p className="mt-2">
+            3. LIABILITY: Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit.
+          </p>
+          <p className="mt-2">
+            4. DISPUTE: Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit.
+          </p>
+        </div>
+
+        <label className="flex items-start gap-3 cursor-pointer group select-none">
+          <div className="relative flex items-center justify-center w-5 h-5 mt-0.5">
+            <input
+              type="checkbox"
+              checked={acceptedTerms}
+              onChange={(e) => {
+                setAcceptedTerms(e.target.checked);
+                if (e.target.checked) setTermsError("");
+              }}
+              className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded bg-white checked:bg-white checked:border-gray-900 transition-all cursor-pointer"
+            />
+            <CheckCircle
+              size={14}
+              className={`absolute text-gray-900 opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none`}
+            />
+          </div>
+          <div className="flex-1">
+            <span className="text-sm text-gray-600 font-medium group-hover:text-gray-900 transition-colors">
+              I acknowledge and accept the Protocol Terms & Privacy Policy.
+            </span>
+            {termsError && (
+              <div className="flex items-center gap-1 mt-1 text-red-500 text-xs font-bold animate-pulse">
+                <AlertCircle size={12} />
+                <span>{termsError}</span>
+              </div>
+            )}
+          </div>
+        </label>
+      </div>
+
+      <div className="flex gap-4">
+        <button
           onClick={onBack}
-          variant="outline"
-          size="lg"
-          className="flex-1"
           disabled={isLoading}
+          className="px-6 py-4 rounded-xl border border-gray-300 text-gray-600 font-bold hover:bg-gray-50 hover:text-gray-900 transition-all duration-300 disabled:opacity-50"
         >
-          Back
-        </Button>
-        <Button
-          onClick={handleSubmit}
-          variant="primary"
-          size="lg"
-          className="flex-1"
-          isLoading={isLoading}
-        >
-          {isLoading ? "Creating Account..." : "Create Account"}
-        </Button>
-      </div>
+          Modify
+        </button>
 
-      {/* Additional Info */}
-      <p className="text-center text-xs text-gray-500 font-noto">
-        By creating an account, you'll be able to start using Escro immediately
-        after email verification
-      </p>
+        <button
+          onClick={handleSubmit}
+          disabled={isLoading}
+          className={`
+                flex-1 relative overflow-hidden px-6 py-4 rounded-xl font-bold text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group
+                ${theme.bg} ${theme.glow} hover:brightness-110 disabled:grayscale disabled:cursor-not-allowed
+            `}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 size={20} className="animate-spin" />
+              <span className="font-mono">Loading...</span>
+            </>
+          ) : (
+            <>
+              <span className="relative z-10 flex items-center gap-2 tracking-wide">
+                Create Account
+                <ChevronRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </span>
+
+              <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            </>
+          )}
+        </button>
+      </div>
     </div>
   );
 };
-
-// Helper component for displaying data rows
-const DataRow: React.FC<{
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}> = ({ icon, label, value }) => (
-  <div className="flex items-start justify-between py-2 border-b border-gray-700 last:border-0">
-    <div className="flex items-center gap-2 text-gray-400">
-      <span className="text-[#10B981]">{icon}</span>
-      <span className="text-sm font-noto">{label}:</span>
-    </div>
-    <span className="text-sm text-white font-semibold font-mont text-right max-w-[60%]">
-      {value}
-    </span>
-  </div>
-);
 
 export default StepFour;
