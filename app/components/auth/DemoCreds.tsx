@@ -21,7 +21,7 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
       role: "customer",
       icon: <ShoppingBag size={20} />,
       title: "Customer Account",
-      color: "from-[#10B981] to-[#059669]",
+      color: "from-emerald-400 to-emerald-600",
       data: {
         fullName: "John Doe",
         email: "customer@demo.com",
@@ -38,7 +38,7 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
       role: "store_owner",
       icon: <Store size={20} />,
       title: "Store Owner Account",
-      color: "from-[#F59E0B] to-[#D97706]",
+      color: "from-amber-400 to-amber-600",
       data: {
         fullName: "Jane Smith",
         email: "seller@demo.com",
@@ -57,7 +57,7 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
       role: "courier",
       icon: <Truck size={20} />,
       title: "Courier Account",
-      color: "from-[#3B82F6] to-[#2563EB]",
+      color: "from-blue-400 to-blue-600",
       data: {
         fullName: "John Smith",
         email: "courier@demo.com",
@@ -75,7 +75,7 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
       role: "agency",
       icon: <Building2 size={20} />,
       title: "Agency Account",
-      color: "from-[#8B5CF6] to-[#7C3AED]",
+      color: "from-purple-400 to-purple-600",
       data: {
         fullName: "Michael Chen",
         email: "agency@demo.com",
@@ -94,20 +94,19 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
 
   return (
     <div className="mb-6">
-      {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-[#0F2F2F] border border-[#10B981]/20 rounded-lg p-4 hover:border-[#10B981] transition-all duration-300 flex items-center justify-between group"
+        className="w-full bg-white border border-gray-300 rounded-lg p-4 hover:border-emerald-500 hover:shadow-md transition-all duration-300 flex items-center justify-between group shadow-sm"
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#10B981]/10 rounded-lg flex items-center justify-center">
-            <TestTube2 size={20} className="text-[#10B981]" />
+          <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
+            <TestTube2 size={20} className="text-emerald-600" />
           </div>
           <div className="text-left">
-            <h3 className="text-white font-semibold font-mont">
+            <h3 className="text-gray-900 font-semibold font-mont">
               Demo Accounts
             </h3>
-            <p className="text-xs text-gray-400 font-noto">
+            <p className="text-xs text-gray-500 font-noto">
               Click to auto-fill form for testing
             </p>
           </div>
@@ -115,17 +114,16 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
         {isOpen ? (
           <ChevronUp
             size={20}
-            className="text-gray-400 group-hover:text-[#10B981] transition-colors"
+            className="text-gray-500 group-hover:text-emerald-600 transition-colors"
           />
         ) : (
           <ChevronDown
             size={20}
-            className="text-gray-400 group-hover:text-[#10B981] transition-colors"
+            className="text-gray-500 group-hover:text-emerald-600 transition-colors"
           />
         )}
       </button>
 
-      {/* Demo Accounts List */}
       {isOpen && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3 animate-fade-in">
           {demoAccounts.map((account, index) => (
@@ -135,7 +133,7 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
                 onFillDemo(account.data);
                 setIsOpen(false);
               }}
-              className="bg-[#0F2F2F] border border-[#10B981]/20 rounded-lg p-4 hover:border-[#10B981] hover:scale-105 transition-all duration-300 text-left group"
+              className="bg-white border border-gray-200 rounded-lg p-4 hover:border-emerald-500 hover:shadow-md transition-all duration-300 text-left group shadow-sm"
             >
               <div className="flex items-start gap-3">
                 <div
@@ -148,22 +146,22 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-white font-semibold text-sm font-mont mb-1">
+                  <h4 className="text-gray-900 font-semibold text-sm font-mont mb-1">
                     {account.title}
                   </h4>
                   <div className="space-y-1">
-                    <p className="text-xs text-gray-400 font-noto">
+                    <p className="text-xs text-gray-600 font-noto">
                       <span className="text-gray-500">Email:</span>{" "}
                       {account.data.email}
                     </p>
-                    <p className="text-xs text-gray-400 font-noto">
+                    <p className="text-xs text-gray-600 font-noto">
                       <span className="text-gray-500">Password:</span>{" "}
                       {account.data.password}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="mt-3 text-xs text-[#10B981] font-semibold font-mont opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-3 text-xs text-emerald-600 font-semibold font-mont opacity-0 group-hover:opacity-100 transition-opacity">
                 Click to auto-fill →
               </div>
             </button>
@@ -171,10 +169,9 @@ const DemoCreds: React.FC<DemoCredsProps> = ({ onFillDemo }) => {
         </div>
       )}
 
-      {/* Info Notice */}
       {isOpen && (
-        <div className="mt-3 bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-          <p className="text-xs text-blue-400 font-noto">
+        <div className="mt-3 bg-blue-50 border border-blue-200 rounded-lg p-3">
+          <p className="text-xs text-blue-700 font-noto">
             <strong>Note:</strong> These are demo accounts for testing purposes
             only. All data will be auto-filled when you click an account.
           </p>
