@@ -9,7 +9,11 @@ import { LuPhone } from 'react-icons/lu'
 import { TbMessageDots } from 'react-icons/tb'
 import { useAgencyContext } from '../AgencyContext'
 
-function Conversation({conversation, setSelectedSomeone, setConversation}) {
+
+
+
+
+function Conversation({conversation, setSelectedSomeone, setConversation}:any) {
    const [newText, setNewText] = useState("")
    const {userInfo, setConversations, conversations} = useAgencyContext()
     function handleSendMessage(){
@@ -17,16 +21,16 @@ function Conversation({conversation, setSelectedSomeone, setConversation}) {
         let newConversations
         const newMessage = {text:newText, timestamp: new Date(), sender:userInfo.userName} //create a new message
         //console.log(conversation)
-        setConversation((prev)=>({
+        setConversation((prev:any)=>({
             ...prev,
             messages:[...prev.messages, newMessage ]
         })) //set the conversation state to include the new message
 
         //check if this conversation is in the conversations array
-        const existingConvo = conversations.find(item=>item.userName===conversation.userName)
+        const existingConvo = conversations.find((item:any)=>item.userName===conversation.userName)
 
         if(existingConvo){ //if it exists
-            newConversations = conversations.map(item=>{
+            newConversations = conversations.map((item:any)=>{
             if(item.userName===conversation.userName){
                 return {...item, messages:[...item.messages, newMessage]} //find the conversation in the array and add the new message
             }else{
@@ -35,7 +39,7 @@ function Conversation({conversation, setSelectedSomeone, setConversation}) {
          })
          setConversations(newConversations)
         }else{ //if not
-            setConversations(prev=> ([...prev, {...conversation, messages:[newMessage], type:"regular"}])) //add a new conversation with the new message as the only message
+            setConversations((prev:any)=> ([...prev, {...conversation, messages:[newMessage], type:"regular"}])) //add a new conversation with the new message as the only message
         }
         //console.log(newConversations)
         
@@ -70,7 +74,7 @@ function Conversation({conversation, setSelectedSomeone, setConversation}) {
         <div className='bg-gray-200 w-full h-[80%] p-4 flex flex-col rounded-lg overflow-y-auto'>
             {
                 conversation.messages.length===0 ? <NoMessages /> :
-                conversation.messages.map((item, index)=>{
+                conversation.messages.map((item: any, index: any)=>{
                     if(item.sender===conversation.userName){
                         return <div key={index} className='mb-2 flex flex-col w-1/2'>
                         <span className='bg-gray-400 text-white p-2 rounded-lg w-full block'>{item.text}</span>

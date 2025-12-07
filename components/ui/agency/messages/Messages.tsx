@@ -5,14 +5,14 @@ import { IoPersonOutline } from 'react-icons/io5';
 //import CreateGroupModal from './CreateGroupModal';
 import { useAgencyContext } from '../AgencyContext';
 
-function Messages({setSelectedSomeone, setConversation}) {
+function Messages({setSelectedSomeone, setConversation}:any) {
     const {conversations, setConversations} = useAgencyContext()
     const [showCreateGroupModal, setShowCreateGroupModal] = useState(false)
   return <>
-  {showCreateGroupModal && <CreateGroupModal setShowCreateGroupModal={setShowCreateGroupModal} />}
+  {/*showCreateGroupModal && <CreateGroupModal setShowCreateGroupModal={setShowCreateGroupModal} />*/}
     <div className='bg-white flex flex-col gap-3 relative shadow-lg rounded-lg h-full p-6 overflow-y-auto'>
         {conversations.length===0 ? <NoMessages />:
-        conversations.map((item, index)=>{
+        conversations.map((item: any, index: any)=>{
           return <div onClick={()=>{setSelectedSomeone(true); setConversation(item)}} className='w-full h-[30px] flex items-center gap-3 p-2 rounded-lg cursor-pointer h-[70px] bg-gray-200' key={item.id}>
             { item.type==="regular" &&
               item.pfp ? <img className='w-[40px] h-[40px] rounded-full' src={item.pfp} alt={item.name} />:

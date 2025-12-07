@@ -1,23 +1,42 @@
 [
   {
+    "id": "101",
     "status": "In Progress",
     "name": "Website Development",
-    "client": "Acme Corp",
-    "date": "Dec 15, 2025",
+    "client": "Ryan LLC",
+    "date": "2025-12-25",
     "progress": "50%"
   },
   {
+    "id": "102",
+    "status": "In Progress",
+    "name": "Website Development",
+    "client": "Fcaebook Inc",
+    "date": "2025-12-25",
+    "progress": "50%"
+  },
+  {
+    "id": "103",
+    "status": "Completed",
+    "name": "Website Development",
+    "client": "Y",
+    "date": "2025-12-25",
+    "progress": "100%"
+  },
+  {
+    "id": "104",
     "status": "Completed",
     "name": "App Development",
     "client": "Acme Corp",
-    "date": "Dec 15, 2025",
-    "progress": "10%"
+    "date": "2025-12-25",
+    "progress": "100%"
   },
   {
+    "id": "105",
     "status": "Cancelled",
     "name": "App Development",
     "client": "Acme Corp",
-    "date": "Dec 15, 2025",
+    "date": "2025-12-25",
     "progress": "20%"
   }
 ]

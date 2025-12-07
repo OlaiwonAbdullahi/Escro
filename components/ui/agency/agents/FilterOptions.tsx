@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,19 +21,72 @@ import { useAgencyContext } from '../AgencyContext';
 
 
 function FilterOptions() {
-    const {agents, setAgents, setAgentsTableSearchResults, setIsSearchingAgentsTable} = useAgencyContext()
+    const {agents, 
+      setAgents, 
+      agentsTableSearchResults,
+      setAgentsTableSearchResults, 
+      isSearchingAgentsTable,
+      setIsSearchingAgentsTable} = useAgencyContext()
+
+      const [filterValue, setFilterValue] = useState("")
 
     function handleSearch(value:string){
         setIsSearchingAgentsTable(true)
-        const newAgents = agents.filter((agent:any)=>{
+        //let newAgents
+        /*if(!isFilteringAgentsTable){
+          newAgents = agents.filter((agent:any)=>{
+            if(agent.name.toLowerCase().includes(value.toLowerCase())){
+                return agent
+            }
+        })
+      }else{
+        newAgents = agentsTableSearchResults.filter((agent:any)=>{
+            if(agent.name.toLowerCase().includes(value.toLowerCase())){
+                return agent
+            }
+        })
+      }*/
+    const newAgents = agents.filter((agent:any)=>{
             if(agent.name.toLowerCase().includes(value.toLowerCase())){
                 return agent
             }
         })
         setAgentsTableSearchResults(newAgents)
-    
-    
+  }
+
+function handleFilter(value:string){
+       setIsSearchingAgentsTable(true)
+       // let newAgents
+       /* if(!isSearchingAgentsTable){
+          newAgents = agents.filter((agent:any)=>{
+            if(agent.status.toLowerCase() === value.toLowerCase()){
+                return agent
+            }
+        })
+      }else{
+        newAgents = agentsTableSearchResults.filter((agent:any)=>{
+            if(agent.status.toLowerCase() === value.toLowerCase()){
+                return agent
+            }
+        })
+      }*/
+   const newAgents = agents.filter((agent:any)=>{
+            if(agent.status.toLowerCase() === value.toLowerCase()){
+                return agent
+            }
+        })
+      setAgentsTableSearchResults(newAgents)
 }
+
+  useEffect(()=>{
+    if(filterValue==="all"){
+      setIsSearchingAgentsTable(false)
+    }else if(!filterValue){
+      return
+    } else{
+      handleFilter(filterValue)
+    }
+  }, [filterValue])
 
   return (
     <div className="bg-white border border-emerald-500/20 rounded-md p-4 cursor-pointer ">
@@ -52,20 +105,20 @@ function FilterOptions() {
             {/* Filters */}
             <div className="flex flex-wrap gap-3">
               {/* Status Filter */}
-              <Select>
-                <SelectTrigger className="w-[160px] h-9 font-mont bg-gray-50 border-gray-200 rounded-sm">
+              <Select value={filterValue} onValueChange={setFilterValue}>
+                <SelectTrigger className="flex-1 w-[160px] h-9 font-mont bg-gray-50 border-gray-200 rounded-sm">
                   <SelectValue placeholder="All Status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value='all'>All Status</SelectItem>
                   <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="active">Inactive</SelectItem>
+                  <SelectItem value="inactive">Inactive</SelectItem>
                 </SelectContent>
               </Select>
 
               {/* Date Range Filter */}
               <Select >
-                <SelectTrigger className="w-[160px] h-9 bg-gray-50 border-gray-200 rounded-sm">
+                <SelectTrigger className="flex-1 w-[160px] h-9 bg-gray-50 border-gray-200 rounded-sm">
                   <SelectValue placeholder="Date Range" />
                 </SelectTrigger>
                 <SelectContent>

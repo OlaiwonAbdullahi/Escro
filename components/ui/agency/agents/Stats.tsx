@@ -31,7 +31,7 @@ function Stats() {
   return (
     <div className="flex flex-wrap gap-3">
         <div
-          className={`bg-emerald-500/10 border-emerald-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
+          className={`flex-1 bg-emerald-500/10 border-emerald-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
         >
           <IoCheckmarkDone className={`w-5 h-5  text-emerald-500`} />
           <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ function Stats() {
         </div>
 
           <div
-          className={`bg-red-500/10 border-red-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
+          className={`flex-1 bg-red-500/10 border-red-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
         >
           <TbCancel className={`w-5 h-5  text-red-500`} />
           <div className="flex items-center gap-2">
@@ -59,7 +59,7 @@ function Stats() {
         </div>
 
         <div
-          className={`bg-blue-500/10 border-blue-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
+          className={`flex-1 bg-blue-500/10 border-blue-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
         >
           <LuClock2  className={`w-5 h-5  text-blue-500`} />
           <div className="flex items-center gap-2">
@@ -73,7 +73,7 @@ function Stats() {
         </div>
         
       <div
-          className={`bg-emerald-500/10 border-emerald-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
+          className={`flex-1 bg-emerald-500/10 border-emerald-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
         >
           <IoCheckmarkDone className={`w-5 h-5  text-emerald-500`} />
           <div className="flex items-center gap-2">
@@ -87,7 +87,7 @@ function Stats() {
         </div>
 
         <div
-          className={`bg-red-500/10 border-red-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
+          className={`flex-1 bg-red-500/10 border-red-500/20 border px-4 py-2.5 rounded-sm flex items-center gap-2.5 transition-all hover:shadow-sm`}
         >
           <TbCancel className={`w-5 h-5  text-red-500`} />
           <div className="flex items-center gap-2">

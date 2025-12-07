@@ -24,7 +24,10 @@ function MobileMenu({setShowMenu}: MobileMenuProps) {
     initial={menuAnimation.initial}
     animate={menuAnimation.animate}
     exit={menuAnimation.initial}
-    transition={others.transition}
+    transition={{
+        duration: 0.5,
+        ease:"easeInOut"
+        }}
     className='fixed inset-0 z-10 bg-emerald-700 flex flex-col'>
                <div className='flex items-center justify-between gap-3 text-emerald-400 h-[100px] p-8 border-b-[1px] border-b-gray-400'>
                     <IoMdClose onClick={() => setShowMenu(false)} className='text-4xl cursor-pointer' />

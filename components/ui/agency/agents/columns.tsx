@@ -85,6 +85,7 @@ function RowActions({agent}: RowActionsProps) {
         const newAgents = agents.map((ag:any)=>{
         if(agent.name===ag.name){
             return {...ag, verification:"Verified"}
+           
         }else{
             return ag
         }
@@ -148,7 +149,7 @@ function RowActions({agent}: RowActionsProps) {
     <div className="flex border-none outline-none focus:outline-none items-center h-full w-full">
       <HiOutlineDotsHorizontal
         className="text-2xl cursor-pointer"
-        onClick={(e) => setAnchorEl(e.currentTarget)}
+        onClick={(e:any) => setAnchorEl(e.currentTarget)}
       />
 
       <Menu

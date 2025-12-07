@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,17 +23,65 @@ import { useAgencyContext } from '../AgencyContext';
 function FilterOptions() {
     const {projects, setProjects, setIsSearchingProjects, setprojectsSearchResults} = useAgencyContext()
 
-    function handleSearch(value:string){
-        setIsSearchingProjects(true)
-        const newProjects = projects.filter((project:any)=>{
-            if(project.name.toLowerCase().includes(value.toLowerCase())){
-                return project
-            }
-        })
+        const [filterValue, setFilterValue] = useState("")
+  
+      function handleSearch(value:string){
+          setIsSearchingProjects(true)
+          let newProjects
+          /*if(!isFilteringAgentsTable){
+            newProjects = projects.filter((project:any)=>{
+              if(project.name.toLowerCase().includes(value.toLowerCase())){
+                  return project
+              }
+          })
+        }else{
+          newProjects = projectsSearchResults.filter((project:any)=>{
+              if(project.name.toLowerCase().includes(value.toLowerCase())){
+                  return project
+              }
+          })
+        }*/
+       newProjects = projects.filter((project:any)=>{
+              if(project.name.toLowerCase().includes(value.toLowerCase())){
+                  return project
+              }
+          })
+          setprojectsSearchResults(newProjects)
+  }
+  
+  function handleFilter(value:string){
+         setIsSearchingProjects(true)
+          let newProjects
+         /* if(!isSearchingProjects){
+            newProjects = projects.filter((project:any)=>{
+              if(project.status.toLowerCase() === value.toLowerCase()){
+                  return project
+              }
+          })
+        }else{
+          newProjects = projectsSearchResults.filter((project:any)=>{
+              if(project.status.toLowerCase() === value.toLowerCase()){
+                  return project
+              }
+          })
+        }*/
+       newProjects = projects.filter((project:any)=>{
+              if(project.status.toLowerCase() === value.toLowerCase()){
+                  return project
+              }
+          })
         setprojectsSearchResults(newProjects)
-    
-    
-}
+  }
+  
+    useEffect(()=>{
+        if(filterValue==="all"){
+          setIsSearchingProjects(false)
+        }else if(!filterValue){
+          return
+        } else{
+          handleFilter(filterValue)
+        }
+      }, [filterValue])
 
   return (
     <div className="bg-white border border-emerald-500/20 rounded-md p-4 cursor-pointer ">
@@ -52,20 +100,21 @@ function FilterOptions() {
             {/* Filters */}
             <div className="flex flex-wrap gap-3">
               {/* Status Filter */}
-              <Select>
-                <SelectTrigger className="w-[160px] h-9 font-mont bg-gray-50 border-gray-200 rounded-sm">
+              <Select value={filterValue} onValueChange={setFilterValue}>
+                <SelectTrigger className="flex-1 w-[160px] h-9 font-mont bg-gray-50 border-gray-200 rounded-sm">
                   <SelectValue placeholder="All Status" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="active">Inactive</SelectItem>
+                  <SelectItem value="in progress">In Progress</SelectItem>
+                  <SelectItem value="completed">Completed</SelectItem>
+                  <SelectItem value="cancelled">Cancelled</SelectItem>
                 </SelectContent>
               </Select>
 
               {/* Date Range Filter */}
               <Select >
-                <SelectTrigger className="w-[160px] h-9 bg-gray-50 border-gray-200 rounded-sm">
+                <SelectTrigger className="flex-1 w-[160px] h-9 bg-gray-50 border-gray-200 rounded-sm">
                   <SelectValue placeholder="Date Range" />
                 </SelectTrigger>
                 <SelectContent>

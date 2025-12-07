@@ -43,6 +43,7 @@ export const AgencyContextProvider = ({children}:Props) =>{
    const [isSearchingAgentsTable, setIsSearchingAgentsTable] = useState(false)
    const [projectsSearchResults, setprojectsSearchResults] = useState([])
    const [isSearchingProjects, setIsSearchingProjects] = useState(false)
+   const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
     function handleAlert(title:string, type:string){
         setAlertInfo({title, type})
         setShowAlert(true)
@@ -89,7 +90,9 @@ export const AgencyContextProvider = ({children}:Props) =>{
         isSearchingProjects,
         setIsSearchingProjects,
         projectsSearchResults,
-        setprojectsSearchResults
+        setprojectsSearchResults,
+        showCreateProjectModal,
+        setShowCreateProjectModal
     }
 
     return <AgencyContext.Provider value={values}>

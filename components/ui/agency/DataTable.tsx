@@ -23,7 +23,7 @@ interface DataTableProps {
 
 export default function DataTable({ rows, columns, pageSize = 10, apiRef }: DataTableProps) {
   return (
-    <div className="overflow-y-auto" style={{ width: "100%", height: "700px" }}>
+    <div className="overflow-y-auto w-full min-h-[fit-content]">
       <DataGrid
       apiRef={apiRef}
       className="table"
@@ -36,6 +36,7 @@ export default function DataTable({ rows, columns, pageSize = 10, apiRef }: Data
         }}
         disableRowSelectionOnClick
         sx={{
+          height: "700px",
           border: "none",
           fontSize: "14px",
           paddingX: "10px",
