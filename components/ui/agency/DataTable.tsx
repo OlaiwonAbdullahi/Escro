@@ -36,7 +36,7 @@ export default function DataTable({ rows, columns, pageSize = 10, apiRef }: Data
         }}
         disableRowSelectionOnClick
         sx={{
-          height: "700px",
+          minHeight: "700px",
           border: "none",
           fontSize: "14px",
           paddingX: "10px",

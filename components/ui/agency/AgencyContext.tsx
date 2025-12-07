@@ -27,6 +27,8 @@ export const AgencyContextProvider = ({children}:Props) =>{
     const gotten = localStorage.getItem("agency-current-page")
     if (gotten) {
       setCurrentPage(JSON.parse(gotten))
+    }else{
+        setCurrentPage("Dashboard")
     }
   }, [])
     useEffect(()=>{
