@@ -9,7 +9,7 @@ function Messaging() {
   const [selectedSomeone, setSelectedSomeone] = useState(false)
   const [conversation, setConversation] = useState({})
   return (
-    <div className='w-full mt-10 md:mt-0 flex flex-col gap-3 h-full p-4'>
+    <div className='w-full flex flex-col gap-3 h-full'>
         {
             !selectedSomeone && <SearchBar setConversation={setConversation} setSelectedSomeone={setSelectedSomeone} /> 
         }

@@ -18,12 +18,20 @@ const AgencyContext = createContext<any>(null)
 export const AgencyContextProvider = ({children}:Props) =>{
 
     const [services, setServices]= useState(SERVICES)
-    const [projects, setProjects] = useState(PROJECTS)
+    const [projects, setProjects] = useState<any>()
     const [minimize, setMinimize] = useState(true)
     const [showAgentInfo, setShowAgentInfo] = useState(false)
     const [selectedAgent, setSelectedAgent] = useState(null)
+    const [selectedProject, setSelectedProject] = useState(null)
     const [currentPage, setCurrentPage] = useState("")
+    const [showNotifications, setShowNotifications] = useState(false)
      useEffect(() => {
+       //projects
+        
+        calculateProgress(PROJECTS)
+        
+
+    //currentpage
     const gotten = localStorage.getItem("agency-current-page")
     if (gotten) {
       setCurrentPage(JSON.parse(gotten))
@@ -34,6 +42,17 @@ export const AgencyContextProvider = ({children}:Props) =>{
     useEffect(()=>{
         localStorage.setItem("agency-current-page", JSON.stringify(currentPage))
     }, [currentPage])
+
+    function calculateProgress(projs:any){
+        const newProjects = projs.map((proj:any)=>{
+            const milestones = proj.milestones
+            const completed = milestones.filter((mile:any)=>mile.completed===true)
+            const progress = Math.trunc((completed.length/milestones.length) * 100)
+            return {...proj, progress: `${progress}%`, status: `${(progress===100 && proj.status!="Cancelled")?"Completed":proj.status==="Cancelled"?"Cancelled":"In Progress"}`}
+        })
+
+        setProjects(newProjects)
+    }
     const [alertInfo, setAlertInfo] = useState({title:"", type:""})
     const [showAlert, setShowAlert] = useState(false)
     const [userInfo, setUserInfo] = useState(USERINFO)
@@ -46,6 +65,7 @@ export const AgencyContextProvider = ({children}:Props) =>{
    const [projectsSearchResults, setprojectsSearchResults] = useState([])
    const [isSearchingProjects, setIsSearchingProjects] = useState(false)
    const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
+   const [showProjectInfo, setShowProjectInfo] = useState(false)
     function handleAlert(title:string, type:string){
         setAlertInfo({title, type})
         setShowAlert(true)
@@ -94,7 +114,14 @@ export const AgencyContextProvider = ({children}:Props) =>{
         projectsSearchResults,
         setprojectsSearchResults,
         showCreateProjectModal,
-        setShowCreateProjectModal
+        setShowCreateProjectModal,
+        showNotifications,
+        setShowNotifications,
+        showProjectInfo,
+        setShowProjectInfo,
+        selectedProject,
+        setSelectedProject,
+        calculateProgress
     }
 
     return <AgencyContext.Provider value={values}>

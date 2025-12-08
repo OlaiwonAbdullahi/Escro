@@ -50,7 +50,7 @@ export const columns = [
         renderCell: (params:any) =>{
            const value = params.value
             return <div className="flex items-center h-full">
-                <span className={`flex items-center gap-1 ${value==="Verified"?"bg-emerald-700/30 text-emerald-700":value==="Pending"?"bg-blue-700/30 text-blue-700":"bg-red-700/30 text-red-700"} w-[fit-content] h-[24px] rounded-lg p-2   `}>{
+                <span className={`flex items-center gap-1 ${value==="Verified"?"bg-emerald-700/30 text-emerald-700":value==="Pending"?"bg-orange-600/30 text-orange-600":"bg-red-700/30 text-red-700"} w-[fit-content] h-[24px] rounded-lg p-2   `}>{
                     value==="Verified" ? <IoCheckmarkDone /> : value==="Pending" ? <LuClock2 /> : <TbCancel />
                 }{value}</span>
             </div>

@@ -5,7 +5,18 @@
     "name": "Website Development",
     "client": "Ryan LLC",
     "date": "2025-12-25",
-    "progress": "50%"
+    "progress": "50%",
+    "milestones": [
+      {"title":"Finish Home page",
+        "completed" : true
+      },
+      {"title":"Finish About page",
+        "completed" : true
+      },
+      {"title":"Finish Contact page",
+        "completed" : false
+      }
+    ]
   },
   {
     "id": "102",
@@ -13,7 +24,18 @@
     "name": "Website Development",
     "client": "Fcaebook Inc",
     "date": "2025-12-25",
-    "progress": "50%"
+    "progress": "50%",
+    "milestones": [
+      {"title":"Finish Home page",
+        "completed" : true
+      },
+      {"title":"Finish About page",
+        "completed" : false
+      },
+      {"title":"Finish Contact page",
+        "completed" : false
+      }
+    ]
   },
   {
     "id": "103",
@@ -21,7 +43,18 @@
     "name": "Website Development",
     "client": "Y",
     "date": "2025-12-25",
-    "progress": "100%"
+    "progress": "100%",
+    "milestones": [
+      {"title":"Finish Home page",
+        "completed" : true
+      },
+      {"title":"Finish About page",
+        "completed" : true
+      },
+      {"title":"Finish Contact page",
+        "completed" : true
+      }
+    ]
   },
   {
     "id": "104",
@@ -29,7 +62,18 @@
     "name": "App Development",
     "client": "Acme Corp",
     "date": "2025-12-25",
-    "progress": "100%"
+    "progress": "100%",
+    "milestones": [
+      {"title":"Finish Home page",
+        "completed" : true
+      },
+      {"title":"Finish About page",
+        "completed" :true
+      },
+      {"title":"Finish Contact page",
+        "completed" : true
+      }
+    ]
   },
   {
     "id": "105",
@@ -37,6 +81,17 @@
     "name": "App Development",
     "client": "Acme Corp",
     "date": "2025-12-25",
-    "progress": "20%"
+    "progress": "20%",
+    "milestones": [
+      {"title":"Finish Home page",
+        "completed" : false
+      },
+      {"title":"Finish About page",
+        "completed" : false
+      },
+      {"title":"Finish Contact page",
+        "completed" : false
+      }
+    ]
   }
 ]
