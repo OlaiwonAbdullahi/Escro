@@ -11,22 +11,30 @@ import {
 } from "@/components/ui/card"
 import { IoCalendarClearOutline } from 'react-icons/io5'
 import { useAgencyContext } from '../AgencyContext';
+import ProjectInfo from '../projects/ProjectInfo';
 
 function ActiveProjects() {
-    const {projects} = useAgencyContext();
-  return (
+    const {projects, setCurrentPage, setSelectedProject, setShowProjectInfo, showProjectInfo} = useAgencyContext();
+    const activeProjects = projects.filter((project:any)=> project.status === "In Progress")
+  return <>
+  {
+    showProjectInfo && <ProjectInfo />
+  }
     <Card className='w-full md:w-[55%]'>
         <CardHeader>
-            <CardTitle>Active Projects</CardTitle>
+             <CardTitle className='flex items-center justify-between gap-3'>
+                <span>Active Projects</span>
+                <span onClick={()=>{setCurrentPage("Projects")}} className='cursor-pointer text-blue-600'>View All</span>
+            </CardTitle>
         </CardHeader>
         <CardContent className='flex flex-col gap-3 h-[500px] overflow-y-auto'>
-            {projects.length!=0? projects.map((project:any, index:number) => (
-                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+            {activeProjects.length!=0? activeProjects.map((project:any, index:number) => (
+                <Project onClick={()=>{setSelectedProject(project); setShowProjectInfo(true)}} key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
             )): <p className='w-full h-full flex items-center justify-center'>No Active Projects</p>}
 
         </CardContent>
     </Card>
-  )
+  </>
 }
 
 export default ActiveProjects
@@ -38,11 +46,12 @@ interface ProjectProps{
     progress: string
     date: string
     status: string
+    onClick: any
 }
 
-function Project({name, client, progress, date, status}: ProjectProps){
+function Project({name, client, progress, date, status, onClick}: ProjectProps){
     return (
-        <Card className='shadow-none bg-gray-100/80'>
+        <Card onClick={onClick} className='shadow-none cursor-pointer hover:bg-gray-100/80 transition-bg duration-300 ease-in-out'>
             <CardHeader>
                 <CardTitle className='flex items-center justify-between gap-3'>
                     {name}
