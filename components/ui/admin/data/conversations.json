@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Adeyemi",
+    "type": "regular",
+    "pfp": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTzX8ZuJ8IshOzHijnRFmffkdMzx3zgVo4rw&s",
+    "id": "adeyemi999",
+    "userName": "adeyemi999",
+    "messages": [
+      {
+        "text": "Hello, how are you?",
+        "timestamp": "2023-10-01T10:00:00Z",
+        "sender": "adeyemi999"
+      },
+      {
+        "text": "Im good and you?",
+        "timestamp": "2023-10-01T10:00:00Z",
+        "sender": "anos999"
+      }
+    ],
+    "lastSeen": "2h"
+  },
+  {
+    "name": "Roqeeb",
+    "pfp": "",
+    "id": "roqeeb123",
+    "type": "regular",
+    "userName": "roqeeb123",
+    "messages": [
+      {
+        "text": "Hello, how are you?",
+        "timestamp": "2023-10-01T10:00:00Z",
+        "sender": "roqeeb123"
+      }
+    ],
+    "lastSeen": "2h"
+  }
+]
+
+

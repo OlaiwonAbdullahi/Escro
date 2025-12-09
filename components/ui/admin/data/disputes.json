@@ -1,0 +1,28 @@
+[
+    {
+        "disputeId":"DIS-001",
+        "orderId":"ORD-062",
+        "customer":"John Doe",
+        "store":"Jane Doe",
+        "reason":"Product not as described",
+        "status":"Pending"
+    },
+
+    {
+        "disputeId":"DIS-002",
+        "orderId":"ORD-067",
+        "customer":"John Doe",
+        "agency":"Agentic",
+        "reason":"Built rubbish",
+        "status":"Pending"
+    },
+
+    {
+        "disputeId":"DIS-003",
+        "orderId":"ORD-069",
+        "customer":"John Doe",
+        "store":"Jane Doe",
+        "reason":"Is a scammer",
+        "status":"Pending"
+    }
+]
