@@ -10,14 +10,16 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { FiMessageSquare } from 'react-icons/fi'
+import { useAgencyContext } from '../AgencyContext'
 
 function RecentMessages() {
+    const {setCurrentPage} = useAgencyContext()
   return (
     <Card className='w-full md:w-[55%]'>
         <CardHeader>
             <CardTitle className='flex items-center justify-between gap-3'>
                 <span>Recent Messages</span>
-                <span className='cursor-pointer text-blue-600'>View All</span>
+                <span onClick={()=>{setCurrentPage("Messages")}} className='cursor-pointer text-blue-600'>View All</span>
             </CardTitle>
         </CardHeader>
         <CardContent className='flex flex-col gap-3 max-h-[430px] overflow-y-auto'>
