@@ -11,6 +11,14 @@
   --data-table-mont: "Montserrat", sans-serif;
 }
 
+.notis::-webkit-scrollbar {
+  display: none;
+
+  
+}
+
+
+
 /*FONTS*/
 @font-face {
   font-family: Montserrat;

@@ -18,24 +18,19 @@ export default function SignupPage() {
     phone: "",
     password: "",
     confirmPassword: "",
-
     role: "",
-
     deliveryAddress: "",
     city: "",
     state: "",
-
     businessName: "",
     businessRegNumber: "",
     storeCategory: "",
     businessAddress: "",
     taxId: "",
-
     vehicleType: "",
     licenseNumber: "",
     vehicleRegNumber: "",
     workingArea: "",
-
     agencyName: "",
     agencyRegNumber: "",
     courierCount: "",
@@ -46,24 +41,22 @@ export default function SignupPage() {
   const [errors, setErrors] = useState<any>({});
 
   const steps = [
-    { number: 1, title: "Account Info", description: "Basic details" },
-    { number: 2, title: "Choose Role", description: "Select your role" },
+    { number: 1, title: "Basic Details", description: "Basic credentials" },
+    { number: 2, title: "Choose Role", description: "Select role" },
     {
       number: 3,
       title: "Additional Info",
       description: "Role-specific details",
     },
-    { number: 4, title: "Review", description: "Confirm & submit" },
+    { number: 4, title: "Review", description: "Confirm and submit" },
   ];
 
   const handleChange = (field: string, value: string | string[]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
+    if (errors[field])
       setErrors((prev: any) => ({ ...prev, [field]: undefined }));
-    }
   };
 
-  // DEMO. I GO COMOT AM FOR PROD
   const handleFillDemo = (demoData: any) => {
     setFormData(demoData);
     setErrors({});
@@ -72,33 +65,16 @@ export default function SignupPage() {
 
   const validateStepOne = () => {
     const newErrors: any = {};
-
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
-    }
-
+    if (!formData.fullName.trim()) newErrors.fullName = "Required";
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-
-    if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters";
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
+    if (!formData.email) newErrors.email = "Required";
+    else if (!emailRegex.test(formData.email))
+      newErrors.email = "Invalid email";
+    if (!formData.phone) newErrors.phone = "Required";
+    if (!formData.password) newErrors.password = "Required";
+    else if (formData.password.length < 8) newErrors.password = "Too short";
+    if (formData.password !== formData.confirmPassword)
+      newErrors.confirmPassword = "Mismatch";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -107,136 +83,112 @@ export default function SignupPage() {
   const validateStepThree = () => {
     const newErrors: any = {};
 
-    if (formData.role === "customer") {
-      if (!formData.deliveryAddress)
-        newErrors.deliveryAddress = "Delivery address is required";
-      if (!formData.city) newErrors.city = "City is required";
-      if (!formData.state) newErrors.state = "State is required";
-    }
-
-    if (formData.role === "store_owner") {
-      if (!formData.businessName)
-        newErrors.businessName = "Business name is required";
-      if (!formData.businessRegNumber)
-        newErrors.businessRegNumber = "Registration number is required";
-      if (!formData.storeCategory)
-        newErrors.storeCategory = "Store category is required";
-      if (!formData.businessAddress)
-        newErrors.businessAddress = "Business address is required";
-    }
-
-    if (formData.role === "courier") {
-      if (!formData.vehicleType)
-        newErrors.vehicleType = "Vehicle type is required";
-      if (!formData.licenseNumber)
-        newErrors.licenseNumber = "License number is required";
-      if (!formData.vehicleRegNumber)
-        newErrors.vehicleRegNumber = "Vehicle registration is required";
-      if (!formData.workingArea)
-        newErrors.workingArea = "Working area is required";
-    }
-
-    if (formData.role === "agency") {
-      if (!formData.agencyName)
-        newErrors.agencyName = "Agency name is required";
-      if (!formData.agencyRegNumber)
-        newErrors.agencyRegNumber = "Registration number is required";
-      if (!formData.courierCount)
-        newErrors.courierCount = "Number of couriers is required";
-      if (!formData.serviceAreas || formData.serviceAreas.length === 0) {
-        newErrors.serviceAreas = "Please select at least one service area";
-      }
-      if (!formData.officeAddress)
-        newErrors.officeAddress = "Office address is required";
-    }
+    if (formData.role === "customer" && !formData.deliveryAddress)
+      newErrors.deliveryAddress = "Required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleStepOneNext = () => {
-    if (validateStepOne()) {
-      setCurrentStep(2);
-    }
+    if (validateStepOne()) setCurrentStep(2);
   };
-
   const handleStepTwoNext = () => {
-    if (formData.role) {
-      setCurrentStep(3);
-    }
+    if (formData.role) setCurrentStep(3);
   };
-
   const handleStepThreeNext = () => {
-    if (validateStepThree()) {
-      setCurrentStep(4);
-    }
+    if (validateStepThree()) setCurrentStep(4);
   };
 
   const handleSubmit = async () => {
     setIsLoading(true);
-
-    // Simulate API call
     setTimeout(() => {
       console.log("Form submitted!", formData);
-      alert("Account created successfully!");
+      alert("Welcome to the future of Commerce.");
       setIsLoading(false);
-      // I'll rededirect to /login when I write it
     }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0F2F2F] via-[#1A4D4D] to-[#0A1F1F] py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white font-mont">Escro</h1>
-          <p className="text-gray-400 mt-2 font-noto">Create your account</p>
+    <div className="min-h-screen w-full bg-white relative flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#fff_70%,transparent_100%)] pointer-events-none" />
+
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="w-full max-w-2xl relative z-10">
+        <div className="text-center mb-10 space-y-2">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <div className="h-8 w-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white font-bold text-xl">
+              E
+            </div>
+            <span className="text-2xl font-bold text-gray-900 tracking-tight font-mont">
+              Escro
+            </span>
+          </div>
+          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 font-mont tracking-tight">
+            Create your account
+          </h1>
         </div>
 
-        <StepIndicator steps={steps} currentStep={currentStep} />
+        <div className="mb-8">
+          <StepIndicator steps={steps} currentStep={currentStep} />
+        </div>
 
-        {/* DEMO - I GO COMOT AM FOR PROD */}
-        {currentStep === 1 && <DemoCreds onFillDemo={handleFillDemo} />}
+        <div className="relative group rounded-3xl border border-gray-200 bg-white/90 backdrop-blur-xl shadow-xl transition-all duration-500">
+          <div className="relative p-6 sm:p-10">
+            {currentStep === 1 && (
+              <StepOne
+                formData={formData}
+                errors={errors}
+                onChange={handleChange}
+                onNext={handleStepOneNext}
+              />
+            )}
 
-        <div className="bg-[#1F2937] rounded-2xl shadow-2xl p-8 border border-[#10B981]/20">
-          {currentStep === 1 && (
-            <StepOne
-              formData={formData}
-              errors={errors}
-              onChange={handleChange}
-              onNext={handleStepOneNext}
-            />
-          )}
+            {currentStep === 2 && (
+              <StepTwo
+                selectedRole={formData.role}
+                onSelectRole={(role) => handleChange("role", role)}
+                onNext={handleStepTwoNext}
+                onBack={() => setCurrentStep(1)}
+              />
+            )}
 
-          {currentStep === 2 && (
-            <StepTwo
-              selectedRole={formData.role}
-              onSelectRole={(role) => handleChange("role", role)}
-              onNext={handleStepTwoNext}
-              onBack={() => setCurrentStep(1)}
-            />
-          )}
+            {currentStep === 3 && (
+              <StepThree
+                role={formData.role}
+                formData={formData}
+                errors={errors}
+                onChange={handleChange}
+                onNext={handleStepThreeNext}
+                onBack={() => setCurrentStep(2)}
+              />
+            )}
 
-          {currentStep === 3 && (
-            <StepThree
-              role={formData.role}
-              formData={formData}
-              errors={errors}
-              onChange={handleChange}
-              onNext={handleStepThreeNext}
-              onBack={() => setCurrentStep(2)}
-            />
-          )}
+            {currentStep === 4 && (
+              <StepFour
+                formData={formData}
+                onSubmit={handleSubmit}
+                onBack={() => setCurrentStep(3)}
+                isLoading={isLoading}
+              />
+            )}
+          </div>
+        </div>
 
-          {currentStep === 4 && (
-            <StepFour
-              formData={formData}
-              onSubmit={handleSubmit}
-              onBack={() => setCurrentStep(3)}
-              isLoading={isLoading}
-            />
-          )}
+        <div className="mt-8 text-center">
+          <p className="text-xs text-gray-500 font-noto">
+            © 2025 Escro Inc. Secure Transactions Protocol.
+          </p>
         </div>
       </div>
+
+      {currentStep === 1 && (
+        <div className="fixed bottom-4 right-4 z-50 opacity-50 hover:opacity-100 transition-opacity">
+          <DemoCreds onFillDemo={handleFillDemo} />
+        </div>
+      )}
     </div>
   );
 }
