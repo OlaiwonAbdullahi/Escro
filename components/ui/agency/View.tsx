@@ -8,6 +8,7 @@ import Messages from './pages/Messages'
 import Settings from './pages/Settings'
 import AlertModal from './AlertModal'
 import {AnimatePresence} from "framer-motion"
+import Notifications from './pages/Notifications'
 
 function View() {
     const {currentPage, setCurrentPage, showAlert} = useAgencyContext()
@@ -22,6 +23,7 @@ function View() {
     currentPage === "Agents"? <Agents /> : 
     currentPage === "Projects"? <Projects /> : 
     currentPage === "Messages"? <Messages /> : 
+    /*currentPage === "Notifications"? <Notifications /> : */
     currentPage === "Settings"? <Settings /> :   
     null
   }

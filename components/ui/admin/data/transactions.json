@@ -1,0 +1,38 @@
+[
+    {
+        "id":"TXN-001",
+        "type":"Order Payment",
+        "user":"John Doe",
+        "amount":"$129.99",
+        "date":"2025-12-21",
+        "status":"Completed",
+        "userPfp":""
+    },
+    {
+        "id":"TXN-002",
+        "type":"Payout",
+        "user":"Agentic",
+        "amount":"$329.99",
+        "date":"2025-12-21",
+        "status":"Processing",
+        "userPfp":""
+    },
+    {
+        "id":"TXN-003",
+        "type":"Order Payment",
+        "user":"John Doe",
+        "amount":"$209.99",
+        "date":"2025-12-21",
+        "status":"Processing",
+        "userPfp":""
+    },
+    {
+        "id":"TXN-004",
+        "type":"Order Payment",
+        "user":"John Doe",
+        "amount":"$209.99",
+        "date":"2025-12-21",
+        "status":"Failed",
+        "userPfp":""
+    }
+]

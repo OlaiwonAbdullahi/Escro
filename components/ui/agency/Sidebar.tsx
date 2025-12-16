@@ -9,6 +9,7 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { BsPerson } from 'react-icons/bs';
 import { SlLogout } from 'react-icons/sl';
 import { useAgencyContext } from './AgencyContext';
+import { Bell } from 'lucide-react';
 
 function Sidebar() {
     const {currentPage, setCurrentPage} = useAgencyContext()
@@ -23,6 +24,7 @@ function Sidebar() {
             <span onClick={()=>setCurrentPage("Agents")} className={`flex items-center gap-2 text-md p-2 ${currentPage === "Agents" ? "bg-white/20" : ""} rounded-lg cursor-pointer hover:bg-white/20 transition-bg duration-300 ease-in-out`} ><GrUserWorker className='min-w-[15px] min-h-[15px]' /> Agents</span>
             <span onClick={()=>setCurrentPage("Projects")} className={`flex items-center gap-2 text-md p-2 ${currentPage === "Projects" ? "bg-white/20" : ""} rounded-lg cursor-pointer hover:bg-white/20 transition-bg duration-300 ease-in-out`} ><GoProject className='min-w-[15px] min-h-[15px]' /> Projects</span>
             <span onClick={()=>setCurrentPage("Messages")} className={`flex items-center gap-2 text-md p-2 ${currentPage === "Messages" ? "bg-white/20" : ""} rounded-lg cursor-pointer hover:bg-white/20 transition-bg duration-300 ease-in-out`} ><FiMessageSquare className='min-w-[15px] min-h-[15px]' /> Messages</span>
+           {/* <span onClick={()=>setCurrentPage("Notifications")} className={`flex items-center gap-2 text-md p-2 ${currentPage === "Notifications" ? "bg-white/20" : ""} rounded-lg cursor-pointer hover:bg-white/20 transition-bg duration-300 ease-in-out`} ><Bell   size={17} /> Notifications</span>*/}
             <span onClick={()=>setCurrentPage("Settings")} className={`flex items-center gap-2 text-md p-2 ${currentPage === "Settings" ? "bg-white/20" : ""} rounded-lg cursor-pointer hover:bg-white/20 transition-bg duration-300 ease-in-out`} ><IoSettingsOutline className='min-w-[15px] min-h-[15px]' /> Settings</span>
         </div>
         <div className='text-white font-mont p-4 flex flex-col gap-1 h-[fit-content]  border-t-[1px] border-t-gray-400 mt-auto'>

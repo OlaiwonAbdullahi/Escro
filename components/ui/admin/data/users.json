@@ -1,0 +1,56 @@
+[
+  {
+    "id": "adeyemi999",
+    "name": "Adeyemi",
+    "pfp": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTzX8ZuJ8IshOzHijnRFmffkdMzx3zgVo4rw&s", 
+    "userName": "adeyemi999",
+    "lastSeen": "2h",
+    "email":"someone@someone.com1",
+    "joined":"2025-12-31",
+    "role":"Customer",
+    "status":"Active"
+  },
+  {
+    "id": "roqeeb123",
+    "name": "Roqeeb",
+    "pfp": "",
+    "userName": "roqeeb123",
+    "lastSeen": "2h",
+    "email":"someone@someone.com",
+    "joined":"2025-12-31",
+    "role":"Store",
+    "status":"Active"
+  },
+  {
+    "id": "enoch234",
+    "name": "Enoch",
+    "pfp": "",
+    "userName": "enoch234",
+    "lastSeen": "Online",
+    "email":"someone@someone.com",
+    "joined":"2025-12-31",
+    "role":"Agency",
+    "status":"Active"
+  },
+  { 
+    "id": "abdullah456",
+    "name": "Abdullah",
+    "pfp": "",
+    "userName": "abdullah456",
+    "lastSeen": "Online",
+    "email":"someone@someone.com",
+    "joined":"2025-12-31",
+    "role":"Courier",
+    "status":"Active"
+  },
+  {
+    "id":"someone123",
+  "name": "Someone",
+  "userName": "someone123",
+  "email": "someone@someone.com",
+  "pfp": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTzX8ZuJ8IshOzHijnRFmffkdMzx3zgVo4rw&s",
+  "joined":"2025-12-31",
+  "role":"Customer",
+  "status":"Banned"
+}
+]

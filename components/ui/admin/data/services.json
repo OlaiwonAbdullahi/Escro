@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Website Development",
+        "duration": "4-6 weeks",
+        "price": "$5000"
+    },
+    {
+        "name": "App Development",
+        "duration": "4-6 weeks",
+        "price": "$50000"
+    },
+    {
+        "name": "Smart Contract Development",
+        "duration": "4-6 weeks",
+        "price": "$150000"
+    }
+]

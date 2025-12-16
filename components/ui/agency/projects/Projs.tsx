@@ -13,14 +13,14 @@ import { useAgencyContext } from '../AgencyContext';
 
 
 function Projs() {
-    const {projects, isSearchingProjects, projectsSearchResults} = useAgencyContext();
+    const {projects, isSearchingProjects, projectsSearchResults, setSelectedProject, setShowProjectInfo} = useAgencyContext();
   return (
     <div className='flex justify-between gap-3 flex-col'>
         {(projects.length!=0 && isSearchingProjects) ? projectsSearchResults.map((project:any, index:number) => (
-                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+                <Project onClick={()=>{setSelectedProject(project); setShowProjectInfo(true)}} key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
             )):
             (projects.length!=0 && !isSearchingProjects) ? projects.map((project:any, index:number) => (
-                <Project key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
+                <Project onClick={()=>{setSelectedProject(project); setShowProjectInfo(true)}} key={index} name={project.name} client={project.client} progress={project.progress} date={project.date} status={project.status} />
             )):
             <p className='w-full h-full flex items-center justify-center'>No Active Projects</p>}
     </div>
@@ -35,12 +35,13 @@ interface ProjectProps{
     client: string
     progress: string
     date: string
-    status: string
+    status: string,
+    onClick : any
 }
 
-function Project({name, client, progress, date, status}: ProjectProps){
+function Project({name, client, progress, date, status, onClick}: ProjectProps){
     return (
-        <Card className='shadow-none cursor-pointer bg-white hover:bg-gray-100/80 transition-bg duration-300 ease-in-out'>
+        <Card onClick={onClick} className='shadow-none cursor-pointer bg-white hover:bg-gray-100/80 transition-bg duration-300 ease-in-out'>
             <CardHeader>
                 <CardTitle className='flex items-center justify-between gap-3'>
                     {name}
